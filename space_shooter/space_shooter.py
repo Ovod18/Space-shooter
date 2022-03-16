@@ -4,6 +4,10 @@ import random
 WIDTH = 480
 HEIGHT = 600
 FPS = 60
+"""The information line height.
+
+    |
+"""
 
 # Setting colors.
 WHITE = (255, 255, 255)

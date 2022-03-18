@@ -35,6 +35,14 @@ def main():
     player = personage.Player(screen)
     all_sprites.add(player)
 
+    # Mobs generation.
+    mobs = pygame.sprite.Group()
+    for i in range(8):
+        m = personage.Mob(screen)
+        all_sprites.add(m)
+        # Adding mob to the group.
+        mobs.add(m)
+
     # Create the game cycle.
     running = True
     while running:

@@ -12,6 +12,7 @@ CLASSES
 
 import pygame
 import colors
+import random
 
 class Player(pygame.sprite.Sprite):
     """This class defines the player.
@@ -41,11 +42,11 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, screen):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.Surface((50, 40))
+        self.image.fill(colors.GREEN)
+        self.rect = self.image.get_rect()
         screen_size = screen.get_size()
         screen_w = screen_size[0]
         screen_h = screen_size[1]
-        self.image.fill(colors.GREEN)
-        self.rect = self.image.get_rect()
         self.rect.centerx = screen_w / 2
         self.rect.bottom = screen_h - 10
         self.speed_x = 0
@@ -71,4 +72,33 @@ class Player(pygame.sprite.Sprite):
             self.rect.right = screen_w
         if self.rect.left < 0:
             self.rect.left = 0
+
+
+class Mob(pygame.sprite.Sprite):
+    def __init__(self, screen):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.Surface((30, 40))
+        self.image.fill(colors.RED)
+        self.rect = self.image.get_rect()
+        screen_size = screen.get_size()
+        screen_w = screen_size[0]
+        self.rect.x = random.randrange(screen_w - self.rect.width)
+        self.rect.y = random.randrange(-100, -40)
+        self.speedx = random.randrange(-3, 3)
+        self.speedy = random.randrange(1, 8)
+
+    def update(self, screen):
+        screen_size = screen.get_size()
+        screen_w = screen_size[0]
+        screen_h = screen_size[1]
+        # Movement.
+        self.rect.x += self.speedx
+        self.rect.y += self.speedy
+        # Reloading when reaching the screen bottom.
+        if ((self.rect.top > screen_h + 10) or
+            (self.rect.left < -25) or
+            (self.rect.right > screen_w + 20)):
+            self.rect.x = random.randrange(screen_w - self.rect.width)
+            self.rect.y = random.randrange(-100, -40)
+            self.speedy = random.randrange(1, 8)
 

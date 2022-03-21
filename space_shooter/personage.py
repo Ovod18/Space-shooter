@@ -9,7 +9,9 @@ CLASSES
 
 :py:class:`.Mob`
 
-    |
+:py:class:`.Bullet`
+
+|
 """
 
 import pygame
@@ -81,7 +83,7 @@ class Mob(pygame.sprite.Sprite):
 
     METHODS
 
-    :py:meth:`Player.update()`
+    :py:meth:`Mob.update()`
 
     |
 
@@ -136,3 +138,45 @@ class Mob(pygame.sprite.Sprite):
             self.rect.y = random.randrange(-100, -40)
             self.speedy = random.randrange(1, 8)
 
+class Bullet(pygame.sprite.Sprite):
+    """This class defines a bullet.
+
+    METHODS
+
+    :py:meth:`Bullet.update()`
+
+    |
+
+    ATTRIBUTES
+
+    .. py:attribute:: image
+        A mobs image.
+        :type: object
+    .. py:attribute:: rect
+        The rect of bullet surface.
+        :type: object
+    .. py:attribute:: speed_y
+        The speed of vertical bullet moving.
+        :type: int
+
+    |
+    """
+
+    def __init__(self, x, y):
+            pygame.sprite.Sprite.__init__(self)
+            self.image = pygame.Surface((10, 20))
+            self.image.fill(YELLOW)
+            self.rect = self.image.get_rect()
+            self.rect.bottom = y
+            self.rect.centerx = x
+            self.speedy = -10
+
+    def update(self):
+        """This method defines bullet updating.
+
+        |
+        """
+        self.rect.y += self.speedy
+        # Kill a bullet, if it goes upper the screen top.
+        if self.rect.bottom < 0:
+            self.kill()

@@ -43,18 +43,63 @@
 <p>CLASSES</p>
 <p><a class="reference internal" href="#personage.Player" title="personage.Player"><code class="xref py py-class docutils literal notranslate"><span class="pre">Player</span></code></a></p>
 <p><a class="reference internal" href="#personage.Mob" title="personage.Mob"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mob</span></code></a></p>
-<blockquote>
-<div><div class="line-block">
+<p><a class="reference internal" href="#personage.Bullet" title="personage.Bullet"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bullet</span></code></a></p>
+<div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div></blockquote>
+<dl class="py class">
+<dt id="personage.Bullet">
+<em class="property">class </em><code class="sig-prename descclassname">personage.</code><code class="sig-name descname">Bullet</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#personage.Bullet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pygame.sprite.Sprite</span></code></p>
+<p>This class defines a bullet.</p>
+<p>METHODS</p>
+<p><a class="reference internal" href="#personage.Bullet.update" title="personage.Bullet.update"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Bullet.update()</span></code></a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>ATTRIBUTES</p>
+<dl class="py attribute">
+<dt id="personage.Bullet.image">
+<code class="sig-name descname">image</code><em class="property">: object</em><a class="headerlink" href="#personage.Bullet.image" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="sig-name descname">A mobs image.</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="personage.Bullet.rect">
+<code class="sig-name descname">rect</code><em class="property">: object</em><a class="headerlink" href="#personage.Bullet.rect" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="sig-name descname">The rect of bullet surface.</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="personage.Bullet.speed_y">
+<code class="sig-name descname">speed_y</code><em class="property">: int</em><a class="headerlink" href="#personage.Bullet.speed_y" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="sig-name descname">The speed of vertical bullet moving.</code></dt>
+<dd></dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="py method">
+<dt id="personage.Bullet.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#personage.Bullet.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method defines bullet updating.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt id="personage.Mob">
 <em class="property">class </em><code class="sig-prename descclassname">personage.</code><code class="sig-name descname">Mob</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">screen</span></em><span class="sig-paren">)</span><a class="headerlink" href="#personage.Mob" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pygame.sprite.Sprite</span></code></p>
 <p>This class defines a mob.</p>
 <p>METHODS</p>
-<p><a class="reference internal" href="#personage.Player.update" title="personage.Player.update"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Player.update()</span></code></a></p>
+<p><a class="reference internal" href="#personage.Mob.update" title="personage.Mob.update"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Mob.update()</span></code></a></p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>

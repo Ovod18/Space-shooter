@@ -42,11 +42,70 @@
 </dl>
 <p>CLASSES</p>
 <p><a class="reference internal" href="#personage.Player" title="personage.Player"><code class="xref py py-class docutils literal notranslate"><span class="pre">Player</span></code></a></p>
+<p><a class="reference internal" href="#personage.Mob" title="personage.Mob"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mob</span></code></a></p>
 <blockquote>
 <div><div class="line-block">
 <div class="line"><br /></div>
 </div>
 </div></blockquote>
+<dl class="py class">
+<dt id="personage.Mob">
+<em class="property">class </em><code class="sig-prename descclassname">personage.</code><code class="sig-name descname">Mob</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">screen</span></em><span class="sig-paren">)</span><a class="headerlink" href="#personage.Mob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pygame.sprite.Sprite</span></code></p>
+<p>This class defines a mob.</p>
+<p>METHODS</p>
+<p><a class="reference internal" href="#personage.Player.update" title="personage.Player.update"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Player.update()</span></code></a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>ATTRIBUTES</p>
+<dl class="py attribute">
+<dt id="personage.Mob.image">
+<code class="sig-name descname">image</code><em class="property">: object</em><a class="headerlink" href="#personage.Mob.image" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="sig-name descname">A mobs image.</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="personage.Mob.rect">
+<code class="sig-name descname">rect</code><em class="property">: object</em><a class="headerlink" href="#personage.Mob.rect" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="sig-name descname">The rect of mob surface.</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="personage.Mob.speed_x">
+<code class="sig-name descname">speed_x</code><em class="property">: int</em><a class="headerlink" href="#personage.Mob.speed_x" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="sig-name descname">The speed of horizontal mob  moving.</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="personage.Mob.speed_y">
+<code class="sig-name descname">speed_y</code><em class="property">: int</em><a class="headerlink" href="#personage.Mob.speed_y" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="sig-name descname">The speed of vertical mob moving.</code></dt>
+<dd></dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="py method">
+<dt id="personage.Mob.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">screen</span></em><span class="sig-paren">)</span><a class="headerlink" href="#personage.Mob.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method defines mob updating.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>object screen: The mob rendering screen.</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt id="personage.Player">
 <em class="property">class </em><code class="sig-prename descclassname">personage.</code><code class="sig-name descname">Player</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">screen</span></em><span class="sig-paren">)</span><a class="headerlink" href="#personage.Player" title="Permalink to this definition">¶</a></dt>
@@ -76,7 +135,7 @@
 <dt id="personage.Player.speed_x">
 <code class="sig-name descname">speed_x</code><em class="property">: int</em><em class="property"> = 8</em><a class="headerlink" href="#personage.Player.speed_x" title="Permalink to this definition">¶</a></dt>
 <dt>
-<code class="sig-name descname">The speed of horizontal player  moving.</code></dt>
+<code class="sig-name descname">The speed of horizontal player moving.</code></dt>
 <dd></dd></dl>
 
 <div class="line-block">

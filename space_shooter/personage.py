@@ -7,6 +7,8 @@ CLASSES
 
 :py:class:`.Player`
 
+:py:class:`.Mob`
+
     |
 """
 
@@ -32,7 +34,7 @@ class Player(pygame.sprite.Sprite):
         The rect of player surface.
         :type: object
     .. py:attribute:: speed_x
-        The speed of horizontal player  moving.
+        The speed of horizontal player moving.
         :type: int
         :value: 8
 
@@ -75,6 +77,32 @@ class Player(pygame.sprite.Sprite):
 
 
 class Mob(pygame.sprite.Sprite):
+    """This class defines a mob.
+
+    METHODS
+
+    :py:meth:`Player.update()`
+
+    |
+
+    ATTRIBUTES
+
+    .. py:attribute:: image
+        A mobs image.
+        :type: object
+    .. py:attribute:: rect
+        The rect of mob surface.
+        :type: object
+    .. py:attribute:: speed_x
+        The speed of horizontal mob  moving.
+        :type: int
+    .. py:attribute:: speed_y
+        The speed of vertical mob moving.
+        :type: int
+
+    |
+    """
+
     def __init__(self, screen):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.Surface((30, 40))
@@ -88,6 +116,12 @@ class Mob(pygame.sprite.Sprite):
         self.speedy = random.randrange(1, 8)
 
     def update(self, screen):
+        """This method defines mob updating.
+
+        :param: object screen: The mob rendering screen.
+
+        |
+        """
         screen_size = screen.get_size()
         screen_w = screen_size[0]
         screen_h = screen_size[1]

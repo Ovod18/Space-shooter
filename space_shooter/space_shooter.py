@@ -35,6 +35,9 @@ def main():
     player = personage.Player(screen)
     all_sprites.add(player)
 
+    # Bullets groupe.
+    bullets = pygame.sprite.Group()
+
     # Mobs generation.
     mobs = pygame.sprite.Group()
     for i in range(8):
@@ -52,8 +55,21 @@ def main():
             # Check closing main window event
             if event.type == pygame.QUIT:
                 running = False
+            # Player shooting.
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    bullet = player.shoot()
+                    all_sprites.add(bullet)
+                    bullets.add(bullet)
 
         all_sprites.update(screen)
+
+        # Check collision with bullets and mobs.
+        hits = pygame.sprite.groupcollide(mobs, bullets, True, True)
+        for hit in hits:
+            m = personage.Mob(screen)
+            all_sprites.add(m)
+            mobs.add(m)
 
         # Check collision with player and mobs.
         hits = pygame.sprite.spritecollide(player, mobs, False)

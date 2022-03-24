@@ -10,6 +10,7 @@ import pygame
 import random
 import personage
 import colors
+from os import path
 
 WIDTH = 480
 HEIGHT = 600
@@ -30,9 +31,14 @@ def main():
     pygame.display.set_caption("Space_shooter")
     clock = pygame.time.Clock()
 
+    # Images directory.
+    img_dir = path.join(path.dirname(__file__), 'img')
+
+    # Loading graphics.
+    player_img = pygame.image.load(path.join(img_dir, "rocket.png")).convert()
 
     all_sprites = pygame.sprite.Group()
-    player = personage.Player(screen)
+    player = personage.Player(screen, player_img)
     all_sprites.add(player)
 
     # Bullets groupe.

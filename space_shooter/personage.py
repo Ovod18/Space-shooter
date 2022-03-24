@@ -18,6 +18,7 @@ import pygame
 import colors
 import random
 
+
 class Player(pygame.sprite.Sprite):
     """This class defines the player.
 
@@ -43,10 +44,12 @@ class Player(pygame.sprite.Sprite):
     |
     """
 
-    def __init__(self, screen):
+    def __init__(self, screen, player_img):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface((50, 40))
-        self.image.fill(colors.GREEN)
+        self.image = player_img
+        self.image.set_colorkey(colors.BLACK)
+       # self.image = pygame.Surface((50, 40))
+       # self.image.fill(colors.GREEN)
         self.rect = self.image.get_rect()
         screen_size = screen.get_size()
         screen_w = screen_size[0]

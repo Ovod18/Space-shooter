@@ -48,8 +48,6 @@ class Player(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = player_img
         self.image.set_colorkey(colors.BLACK)
-       # self.image = pygame.Surface((50, 40))
-       # self.image.fill(colors.GREEN)
         self.rect = self.image.get_rect()
         screen_size = screen.get_size()
         screen_w = screen_size[0]
@@ -71,17 +69,17 @@ class Player(pygame.sprite.Sprite):
         self.speed_x = 0
         keystate = pygame.key.get_pressed()
         if keystate[pygame.K_RIGHT]:
-            self.speed_x = 8
+            self.speed_x = 10
         if keystate[pygame.K_LEFT]:
-            self.speed_x = -8
+            self.speed_x = -10
         self.rect.x += self.speed_x
         if self.rect.right > screen_w:
             self.rect.right = screen_w
         if self.rect.left < 0:
             self.rect.left = 0
 
-    def shoot(self):
-        bullet = Bullet(self.rect.centerx, self.rect.top)
+    def shoot(self, bullet_img):
+        bullet = Bullet(self.rect.centerx, self.rect.top, bullet_img)
         return bullet
 
 class Mob(pygame.sprite.Sprite):
@@ -168,10 +166,10 @@ class Bullet(pygame.sprite.Sprite):
     |
     """
 
-    def __init__(self, x, y):
+    def __init__(self, x, y, bullet_img):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface((10, 20))
-        self.image.fill(colors.YELLOW)
+        self.image = bullet_img
+        self.image.set_colorkey(colors.BLACK)
         self.rect = self.image.get_rect()
         self.rect.bottom = y
         self.rect.centerx = x

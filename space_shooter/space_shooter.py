@@ -12,7 +12,7 @@ import personage
 import colors
 from os import path
 
-WIDTH = 480
+WIDTH = 300
 HEIGHT = 600
 FPS = 60
 
@@ -36,6 +36,7 @@ def main():
 
     # Loading graphics.
     player_img = pygame.image.load(path.join(img_dir, "rocket.png")).convert()
+    bullet_img = pygame.image.load(path.join(img_dir, "bullet.png")).convert()
 
     all_sprites = pygame.sprite.Group()
     player = personage.Player(screen, player_img)
@@ -64,7 +65,7 @@ def main():
             # Player shooting.
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    bullet = player.shoot()
+                    bullet = player.shoot(bullet_img)
                     all_sprites.add(bullet)
                     bullets.add(bullet)
 

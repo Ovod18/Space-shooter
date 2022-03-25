@@ -50,6 +50,7 @@ class Player(pygame.sprite.Sprite):
         self.image.set_colorkey(colors.BLACK)
         self.rect = self.image.get_rect()
         self.radius = self.rect.width / 2
+        # Check collision area.
         #pygame.draw.circle(self.image, colors.RED,
         #                   self.rect.center, self.radius)
         screen_size = screen.get_size()
@@ -92,12 +93,17 @@ class Mob(pygame.sprite.Sprite):
 
     :py:meth:`Mob.update()`
 
+    :py:meth:`Mob.rotate()`
+
     |
 
     ATTRIBUTES
 
-    .. py:attribute:: image
+    .. py:attribute:: image_orig
         A mobs image.
+        :type: object
+    .. py:attribute:: image
+        A copy of image_orig (for image rotation).
         :type: object
     .. py:attribute:: rect
         The rect of mob surface.
@@ -108,16 +114,29 @@ class Mob(pygame.sprite.Sprite):
     .. py:attribute:: speed_y
         The speed of vertical mob moving.
         :type: int
+    .. py:attribute:: rot
+        The initial rotation angle.
+        :type: int
+        :value: 0
+    .. py:attribute:: rot_speed
+        The angle of mob rotation.
+        :type: int
+    .. py:attribute:: last_update
+        Time of mob updating.
+        :type: int
+
 
     |
     """
 
     def __init__(self, screen, mob_img):
         pygame.sprite.Sprite.__init__(self)
-        self.image = mob_img
-        self.image.set_colorkey(colors.BLACK)
+        self.image_orig = mob_img
+        self.image_orig.set_colorkey(colors.BLACK)
+        self.image = self.image_orig.copy()
         self.rect = self.image.get_rect()
         self.radius = self.rect.width / 2
+        # Check collision area.
         #pygame.draw.circle(self.image, colors.RED,
         #                   self.rect.center, self.radius)
         screen_size = screen.get_size()
@@ -126,6 +145,9 @@ class Mob(pygame.sprite.Sprite):
         self.rect.y = random.randrange(-100, -40)
         self.speedx = random.randrange(-2, 2)
         self.speedy = random.randrange(1, 3)
+        self.rot = 0
+        self.rot_speed = random.randrange(-8, 8)
+        self.last_update = pygame.time.get_ticks()
 
     def update(self, screen):
         """This method defines mob updating.
@@ -140,6 +162,8 @@ class Mob(pygame.sprite.Sprite):
         # Movement.
         self.rect.x += self.speedx
         self.rect.y += self.speedy
+        # Rotation.
+        self.rotate()
         # Reloading when reaching the screen bottom.
         if ((self.rect.top > screen_h + 10) or
             (self.rect.left < -25) or
@@ -148,6 +172,21 @@ class Mob(pygame.sprite.Sprite):
             self.rect.y = random.randrange(-100, -40)
             self.speedy = random.randrange(1, 3)
             self.speedx = random.randrange(-2, 2)
+
+    def rotate(self):
+        """This method defines mob rotation.
+
+        |
+        """
+        now = pygame.time.get_ticks()
+        if now - self.last_update > 50:
+            self.last_update = now
+            self.rot = (self.rot + self.rot_speed) % 360
+            new_image = pygame.transform.rotate(self.image_orig, self.rot)
+            old_center = self.rect.center
+            self.image = new_image
+            self.rect = self.image.get_rect()
+            self.rect.center = old_center
 
 class Bullet(pygame.sprite.Sprite):
     """This class defines a bullet.

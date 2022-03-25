@@ -38,6 +38,12 @@ def main():
     player_img = pygame.image.load(path.join(img_dir, "rocket.png")).convert()
     bullet_img = pygame.image.load(path.join(img_dir, "bullet.png")).convert()
     mob_img = pygame.image.load(path.join(img_dir, "kal.png")).convert()
+    bg_img = pygame.image.load(path.join(img_dir, "background.png")).convert()
+
+    # Rendering background.
+    bg_rect = bg_img.get_rect()
+    screen.blit(bg_img, bg_rect)
+    pygame.display.flip()
 
     all_sprites = pygame.sprite.Group()
     player = personage.Player(screen, player_img)
@@ -85,7 +91,8 @@ def main():
             running = False
 
         # Rendering
-        screen.fill(colors.BLACK)
+        #screen.fill(colors.BLACK)
+        screen.blit(bg_img, bg_rect)
         all_sprites.draw(screen)
         pygame.display.flip()
 

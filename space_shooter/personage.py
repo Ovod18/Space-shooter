@@ -49,6 +49,9 @@ class Player(pygame.sprite.Sprite):
         self.image = player_img
         self.image.set_colorkey(colors.BLACK)
         self.rect = self.image.get_rect()
+        self.radius = self.rect.width / 2
+        #pygame.draw.circle(self.image, colors.RED,
+        #                   self.rect.center, self.radius)
         screen_size = screen.get_size()
         screen_w = screen_size[0]
         screen_h = screen_size[1]
@@ -114,6 +117,9 @@ class Mob(pygame.sprite.Sprite):
         self.image = mob_img
         self.image.set_colorkey(colors.BLACK)
         self.rect = self.image.get_rect()
+        self.radius = self.rect.width / 2
+        #pygame.draw.circle(self.image, colors.RED,
+        #                   self.rect.center, self.radius)
         screen_size = screen.get_size()
         screen_w = screen_size[0]
         self.rect.x = random.randrange(screen_w - self.rect.width)

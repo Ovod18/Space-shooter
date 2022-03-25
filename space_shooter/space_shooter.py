@@ -86,7 +86,8 @@ def main():
             mobs.add(m)
 
         # Check collision with player and mobs.
-        hits = pygame.sprite.spritecollide(player, mobs, False)
+        hits = pygame.sprite.spritecollide(player, mobs, False,
+                                           pygame.sprite.collide_circle)
         if hits:
             running = False
 

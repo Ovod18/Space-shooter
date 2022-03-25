@@ -69,9 +69,9 @@ class Player(pygame.sprite.Sprite):
         self.speed_x = 0
         keystate = pygame.key.get_pressed()
         if keystate[pygame.K_RIGHT]:
-            self.speed_x = 10
+            self.speed_x = 6
         if keystate[pygame.K_LEFT]:
-            self.speed_x = -10
+            self.speed_x = -6
         self.rect.x += self.speed_x
         if self.rect.right > screen_w:
             self.rect.right = screen_w
@@ -109,17 +109,17 @@ class Mob(pygame.sprite.Sprite):
     |
     """
 
-    def __init__(self, screen):
+    def __init__(self, screen, mob_img):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface((30, 40))
-        self.image.fill(colors.RED)
+        self.image = mob_img
+        self.image.set_colorkey(colors.BLACK)
         self.rect = self.image.get_rect()
         screen_size = screen.get_size()
         screen_w = screen_size[0]
         self.rect.x = random.randrange(screen_w - self.rect.width)
         self.rect.y = random.randrange(-100, -40)
-        self.speedx = random.randrange(-3, 3)
-        self.speedy = random.randrange(1, 8)
+        self.speedx = random.randrange(-2, 2)
+        self.speedy = random.randrange(1, 3)
 
     def update(self, screen):
         """This method defines mob updating.
@@ -140,7 +140,8 @@ class Mob(pygame.sprite.Sprite):
             (self.rect.right > screen_w + 20)):
             self.rect.x = random.randrange(screen_w - self.rect.width)
             self.rect.y = random.randrange(-100, -40)
-            self.speedy = random.randrange(1, 8)
+            self.speedy = random.randrange(1, 3)
+            self.speedx = random.randrange(-2, 2)
 
 class Bullet(pygame.sprite.Sprite):
     """This class defines a bullet.

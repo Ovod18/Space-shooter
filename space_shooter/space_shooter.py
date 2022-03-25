@@ -12,7 +12,7 @@ import personage
 import colors
 from os import path
 
-WIDTH = 300
+WIDTH = 400
 HEIGHT = 600
 FPS = 60
 
@@ -37,6 +37,7 @@ def main():
     # Loading graphics.
     player_img = pygame.image.load(path.join(img_dir, "rocket.png")).convert()
     bullet_img = pygame.image.load(path.join(img_dir, "bullet.png")).convert()
+    mob_img = pygame.image.load(path.join(img_dir, "kal.png")).convert()
 
     all_sprites = pygame.sprite.Group()
     player = personage.Player(screen, player_img)
@@ -47,8 +48,8 @@ def main():
 
     # Mobs generation.
     mobs = pygame.sprite.Group()
-    for i in range(8):
-        m = personage.Mob(screen)
+    for i in range(5):
+        m = personage.Mob(screen, mob_img)
         all_sprites.add(m)
         # Adding mob to the group.
         mobs.add(m)
@@ -74,7 +75,7 @@ def main():
         # Check collision with bullets and mobs.
         hits = pygame.sprite.groupcollide(mobs, bullets, True, True)
         for hit in hits:
-            m = personage.Mob(screen)
+            m = personage.Mob(screen, mob_img)
             all_sprites.add(m)
             mobs.add(m)
 

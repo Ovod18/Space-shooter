@@ -16,10 +16,7 @@ import interface
 WIDTH = 400
 HEIGHT = 600
 FPS = 60
-
-
-def bg_img_load():
-    return pygame.image.load(path.join(img_dir, "background.png")).convert()
+IMG_DIR = path.join(path.dirname(__file__), 'img')
 
 # Create the main window.
 pygame.init()
@@ -28,21 +25,16 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Space_shooter")
 clock = pygame.time.Clock()
 
-# Images directory.
-img_dir = path.join(path.dirname(__file__), 'img')
+bg_img = pygame.image.load(path.join(IMG_DIR, "background.png")).convert()
 
-# Loading graphics.
-player_img = pygame.image.load(path.join(img_dir, "rocket.png")).convert()
-bullet_img = pygame.image.load(path.join(img_dir, "bullet.png")).convert()
-mob_img = pygame.image.load(path.join(img_dir, "kal.png")).convert()
-bg_img = bg_img_load()
+# Creating sprites groups.
 all_sprites = pygame.sprite.Group()
 mobs = pygame.sprite.Group()
 bullets = pygame.sprite.Group()
 
-def new_mob(surface, img):
+def new_mob(surface):
     # Mobs generation.
-    m = personage.Mob(surface, img)
+    m = personage.Mob(surface)
     all_sprites.add(m)
     # Adding mob to the group.
     mobs.add(m)
@@ -59,12 +51,12 @@ def main():
     screen.blit(bg_img, bg_rect)
     pygame.display.flip()
 
-    player = personage.Player(screen, player_img)
+    player = personage.Player(screen)
     all_sprites.add(player)
 
 
     for i in range(8):
-        new_mob(screen, mob_img)
+        new_mob(screen)
 
     score = 0
 
@@ -80,7 +72,7 @@ def main():
             # Player shooting.
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    bullet = player.shoot(bullet_img)
+                    bullet = player.shoot()
                     all_sprites.add(bullet)
                     bullets.add(bullet)
 
@@ -89,7 +81,7 @@ def main():
         # Check collision with bullets and mobs.
         hits = pygame.sprite.groupcollide(mobs, bullets, True, True)
         for hit in hits:
-            m = personage.Mob(screen, mob_img)
+            m = personage.Mob(screen)
             all_sprites.add(m)
             mobs.add(m)
             score += 1

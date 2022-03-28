@@ -17,7 +17,9 @@ CLASSES
 import pygame
 import colors
 import random
+from os import path
 
+IMG_DIR = path.join(path.dirname(__file__), 'img')
 
 class Player(pygame.sprite.Sprite):
     """This class defines the player.
@@ -44,9 +46,10 @@ class Player(pygame.sprite.Sprite):
     |
     """
 
-    def __init__(self, screen, player_img):
+    def __init__(self, screen):
         pygame.sprite.Sprite.__init__(self)
-        self.image = player_img
+        self.image = pygame.image.load(path.join(IMG_DIR,
+                                                 "rocket.png")).convert()
         self.image.set_colorkey(colors.BLACK)
         self.rect = self.image.get_rect()
         self.radius = self.rect.width / 2
@@ -82,8 +85,8 @@ class Player(pygame.sprite.Sprite):
         if self.rect.left < 0:
             self.rect.left = 0
 
-    def shoot(self, bullet_img):
-        bullet = Bullet(self.rect.centerx, self.rect.top, bullet_img)
+    def shoot(self):
+        bullet = Bullet(self.rect.centerx, self.rect.top)
         return bullet
 
 class Mob(pygame.sprite.Sprite):
@@ -129,9 +132,10 @@ class Mob(pygame.sprite.Sprite):
     |
     """
 
-    def __init__(self, screen, mob_img):
+    def __init__(self, screen):
         pygame.sprite.Sprite.__init__(self)
-        self.image_orig = mob_img
+        self.image_orig = pygame.image.load(path.join(IMG_DIR,
+                                            "kal.png")).convert()
         self.image_orig.set_colorkey(colors.BLACK)
         self.image = self.image_orig.copy()
         self.rect = self.image.get_rect()
@@ -212,9 +216,10 @@ class Bullet(pygame.sprite.Sprite):
     |
     """
 
-    def __init__(self, x, y, bullet_img):
+    def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        self.image = bullet_img
+        self.image = pygame.image.load(path.join(IMG_DIR,
+                                                 "bullet.png")).convert()
         self.image.set_colorkey(colors.BLACK)
         self.rect = self.image.get_rect()
         self.rect.bottom = y

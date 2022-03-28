@@ -8,34 +8,18 @@
 
 import pygame
 import random
+from os import path
 import personage
 import colors
-from os import path
+import interface
 
 WIDTH = 400
 HEIGHT = 600
 FPS = 60
 
-def draw_text(surface, text, size, x, y):
-    """Rendering text on the surface.
 
-    :param: surface: a surface for drowing text
-    :type: surface: object
-    :param: text: text for drowing
-    :type: text: str
-    :param: size: text size
-    :type: size: int
-    :param: x,y: the coordinates for drowing text
-    :type: size: int
-
-    |
-    """
-    font_name = pygame.font.match_font('arial')
-    font = pygame.font.Font(font_name, size)
-    text_surface = font.render(text, True, colors.RED)
-    text_rect = text_surface.get_rect()
-    text_rect.midtop = (x, y)
-    surface.blit(text_surface, text_rect)
+def bg_img_load():
+    return pygame.image.load(path.join(img_dir, "background.png")).convert()
 
 # Create the main window.
 pygame.init()
@@ -51,8 +35,7 @@ img_dir = path.join(path.dirname(__file__), 'img')
 player_img = pygame.image.load(path.join(img_dir, "rocket.png")).convert()
 bullet_img = pygame.image.load(path.join(img_dir, "bullet.png")).convert()
 mob_img = pygame.image.load(path.join(img_dir, "kal.png")).convert()
-bg_img = pygame.image.load(path.join(img_dir, "background.png")).convert()
-
+bg_img = bg_img_load()
 all_sprites = pygame.sprite.Group()
 mobs = pygame.sprite.Group()
 bullets = pygame.sprite.Group()
@@ -121,7 +104,7 @@ def main():
         #screen.fill(colors.BLACK)
         screen.blit(bg_img, bg_rect)
         all_sprites.draw(screen)
-        draw_text(screen, str(score), 18, WIDTH/2, 10)
+        interface.draw_text(screen, str(score), 18, WIDTH/2, 10)
         pygame.display.flip()
 
     pygame.quit()

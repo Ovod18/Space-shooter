@@ -16,7 +16,26 @@ WIDTH = 400
 HEIGHT = 600
 FPS = 60
 
-# Setting colors.
+def draw_text(surface, text, size, x, y):
+    """Rendering text on the surface.
+
+    :param: surface: a surface for drowing text
+    :type: surface: object
+    :param: text: text for drowing
+    :type: text: str
+    :param: size: text size
+    :type: size: int
+    :param: x,y: the coordinates for drowing text
+    :type: size: int
+
+    |
+    """
+    font_name = pygame.font.match_font('arial')
+    font = pygame.font.Font(font_name, size)
+    text_surface = font.render(text, True, colors.RED)
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (x, y)
+    surface.blit(text_surface, text_rect)
 
 def main():
     """The main function in space_shooter
@@ -45,6 +64,7 @@ def main():
     screen.blit(bg_img, bg_rect)
     pygame.display.flip()
 
+    
     all_sprites = pygame.sprite.Group()
     player = personage.Player(screen, player_img)
     all_sprites.add(player)
@@ -59,6 +79,8 @@ def main():
         all_sprites.add(m)
         # Adding mob to the group.
         mobs.add(m)
+
+    score = 0
 
     # Create the game cycle.
     running = True
@@ -84,6 +106,7 @@ def main():
             m = personage.Mob(screen, mob_img)
             all_sprites.add(m)
             mobs.add(m)
+            score += 1
 
         # Check collision with player and mobs.
         hits = pygame.sprite.spritecollide(player, mobs, False,
@@ -95,6 +118,7 @@ def main():
         #screen.fill(colors.BLACK)
         screen.blit(bg_img, bg_rect)
         all_sprites.draw(screen)
+        draw_text(screen, str(score), 18, WIDTH/2, 10)
         pygame.display.flip()
 
     pygame.quit()

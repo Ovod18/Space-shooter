@@ -37,48 +37,51 @@ def draw_text(surface, text, size, x, y):
     text_rect.midtop = (x, y)
     surface.blit(text_surface, text_rect)
 
+# Create the main window.
+pygame.init()
+pygame.mixer.init()
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Space_shooter")
+clock = pygame.time.Clock()
+
+# Images directory.
+img_dir = path.join(path.dirname(__file__), 'img')
+
+# Loading graphics.
+player_img = pygame.image.load(path.join(img_dir, "rocket.png")).convert()
+bullet_img = pygame.image.load(path.join(img_dir, "bullet.png")).convert()
+mob_img = pygame.image.load(path.join(img_dir, "kal.png")).convert()
+bg_img = pygame.image.load(path.join(img_dir, "background.png")).convert()
+
+all_sprites = pygame.sprite.Group()
+mobs = pygame.sprite.Group()
+bullets = pygame.sprite.Group()
+
+def new_mob(surface, img):
+    # Mobs generation.
+    m = personage.Mob(surface, img)
+    all_sprites.add(m)
+    # Adding mob to the group.
+    mobs.add(m)
+
+
 def main():
     """The main function in space_shooter
 
     |
     """
 
-    # Create the main window.
-    pygame.init()
-    pygame.mixer.init()
-    screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    pygame.display.set_caption("Space_shooter")
-    clock = pygame.time.Clock()
-
-    # Images directory.
-    img_dir = path.join(path.dirname(__file__), 'img')
-
-    # Loading graphics.
-    player_img = pygame.image.load(path.join(img_dir, "rocket.png")).convert()
-    bullet_img = pygame.image.load(path.join(img_dir, "bullet.png")).convert()
-    mob_img = pygame.image.load(path.join(img_dir, "kal.png")).convert()
-    bg_img = pygame.image.load(path.join(img_dir, "background.png")).convert()
-
     # Rendering background.
     bg_rect = bg_img.get_rect()
     screen.blit(bg_img, bg_rect)
     pygame.display.flip()
 
-    
-    all_sprites = pygame.sprite.Group()
     player = personage.Player(screen, player_img)
     all_sprites.add(player)
 
-    # Bullets groupe.
-    bullets = pygame.sprite.Group()
 
-    # Mobs generation.
-    mobs = pygame.sprite.Group()
-    for i in range(5):
-        m = personage.Mob(screen, mob_img)
-        all_sprites.add(m)
-        # Adding mob to the group.
-        mobs.add(m)
+    for i in range(8):
+        new_mob(screen, mob_img)
 
     score = 0
 

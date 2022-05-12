@@ -1,21 +1,23 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>personage module &#8212; space_shooter 1 documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="space_shooter module" href="space_shooter.html" />
-    <link rel="prev" title="colors module" href="colors.html" />
+    <link rel="prev" title="interface module" href="interface.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -32,14 +34,16 @@
   <div class="section" id="module-personage">
 <span id="personage-module"></span><h1>personage module<a class="headerlink" href="#module-personage" title="Permalink to this headline">¶</a></h1>
 <p>This module contains player difinitions.</p>
-<dl class="field-list simple">
-<dt class="field-odd">platform</dt>
-<dd class="field-odd"><p>Linux</p>
-</dd>
-<dt class="field-even">author</dt>
-<dd class="field-even"><p>Ovod18</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">platform:</th><td class="field-body">Linux</td>
+</tr>
+<tr class="field-even field"><th class="field-name">author:</th><td class="field-body">Ovod18</td>
+</tr>
+</tbody>
+</table>
 <p>CLASSES</p>
 <p><a class="reference internal" href="#personage.Player" title="personage.Player"><code class="xref py py-class docutils literal notranslate"><span class="pre">Player</span></code></a></p>
 <p><a class="reference internal" href="#personage.Mob" title="personage.Mob"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mob</span></code></a></p>
@@ -47,9 +51,9 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<dl class="py class">
+<dl class="class">
 <dt id="personage.Bullet">
-<em class="property">class </em><code class="sig-prename descclassname">personage.</code><code class="sig-name descname">Bullet</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">bullet_img</span></em><span class="sig-paren">)</span><a class="headerlink" href="#personage.Bullet" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">personage.</code><code class="descname">Bullet</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#personage.Bullet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pygame.sprite.Sprite</span></code></p>
 <p>This class defines a bullet.</p>
 <p>METHODS</p>
@@ -58,33 +62,12 @@
 <div class="line"><br /></div>
 </div>
 <p>ATTRIBUTES</p>
-<dl class="py attribute">
-<dt id="personage.Bullet.image">
-<code class="sig-name descname">image</code><em class="property">: object</em><a class="headerlink" href="#personage.Bullet.image" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="sig-name descname">A mobs image.</code></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="personage.Bullet.rect">
-<code class="sig-name descname">rect</code><em class="property">: object</em><a class="headerlink" href="#personage.Bullet.rect" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="sig-name descname">The rect of bullet surface.</code></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="personage.Bullet.speed_y">
-<code class="sig-name descname">speed_y</code><em class="property">: int</em><a class="headerlink" href="#personage.Bullet.speed_y" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="sig-name descname">The speed of vertical bullet moving.</code></dt>
-<dd></dd></dl>
-
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<dl class="py method">
+<dl class="method">
 <dt id="personage.Bullet.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">screen</span></em><span class="sig-paren">)</span><a class="headerlink" href="#personage.Bullet.update" title="Permalink to this definition">¶</a></dt>
+<code class="descname">update</code><span class="sig-paren">(</span><em>screen</em><span class="sig-paren">)</span><a class="headerlink" href="#personage.Bullet.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method defines bullet updating.</p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -93,9 +76,9 @@
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="personage.Mob">
-<em class="property">class </em><code class="sig-prename descclassname">personage.</code><code class="sig-name descname">Mob</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">screen</span></em>, <em class="sig-param"><span class="n">mob_img</span></em><span class="sig-paren">)</span><a class="headerlink" href="#personage.Mob" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">personage.</code><code class="descname">Mob</code><span class="sig-paren">(</span><em>screen</em><span class="sig-paren">)</span><a class="headerlink" href="#personage.Mob" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pygame.sprite.Sprite</span></code></p>
 <p>This class defines a mob.</p>
 <p>METHODS</p>
@@ -105,83 +88,30 @@
 <div class="line"><br /></div>
 </div>
 <p>ATTRIBUTES</p>
-<dl class="py attribute">
-<dt id="personage.Mob.image_orig">
-<code class="sig-name descname">image_orig</code><em class="property">: object</em><a class="headerlink" href="#personage.Mob.image_orig" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="sig-name descname">A mobs image.</code></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="personage.Mob.image">
-<code class="sig-name descname">image</code><em class="property">: object</em><a class="headerlink" href="#personage.Mob.image" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="sig-name descname">A copy of image_orig (for image rotation).</code></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="personage.Mob.rect">
-<code class="sig-name descname">rect</code><em class="property">: object</em><a class="headerlink" href="#personage.Mob.rect" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="sig-name descname">The rect of mob surface.</code></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="personage.Mob.speed_x">
-<code class="sig-name descname">speed_x</code><em class="property">: int</em><a class="headerlink" href="#personage.Mob.speed_x" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="sig-name descname">The speed of horizontal mob  moving.</code></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="personage.Mob.speed_y">
-<code class="sig-name descname">speed_y</code><em class="property">: int</em><a class="headerlink" href="#personage.Mob.speed_y" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="sig-name descname">The speed of vertical mob moving.</code></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="personage.Mob.rot">
-<code class="sig-name descname">rot</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#personage.Mob.rot" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="sig-name descname">The initial rotation angle.</code></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="personage.Mob.rot_speed">
-<code class="sig-name descname">rot_speed</code><em class="property">: int</em><a class="headerlink" href="#personage.Mob.rot_speed" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="sig-name descname">The angle of mob rotation.</code></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="personage.Mob.last_update">
-<code class="sig-name descname">last_update</code><em class="property">: int</em><a class="headerlink" href="#personage.Mob.last_update" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="sig-name descname">Time of mob updating.</code></dt>
-<dd></dd></dl>
-
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<dl class="py method">
+<dl class="method">
 <dt id="personage.Mob.rotate">
-<code class="sig-name descname">rotate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#personage.Mob.rotate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rotate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#personage.Mob.rotate" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method defines mob rotation.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="personage.Mob.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">screen</span></em><span class="sig-paren">)</span><a class="headerlink" href="#personage.Mob.update" title="Permalink to this definition">¶</a></dt>
+<code class="descname">update</code><span class="sig-paren">(</span><em>screen</em><span class="sig-paren">)</span><a class="headerlink" href="#personage.Mob.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method defines mob updating.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>object screen: The mob rendering screen.</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Param:</th><td class="field-body">object screen: The mob rendering screen.</td>
+</tr>
+</tbody>
+</table>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -189,9 +119,9 @@
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="personage.Player">
-<em class="property">class </em><code class="sig-prename descclassname">personage.</code><code class="sig-name descname">Player</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">screen</span></em>, <em class="sig-param"><span class="n">player_img</span></em><span class="sig-paren">)</span><a class="headerlink" href="#personage.Player" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">personage.</code><code class="descname">Player</code><span class="sig-paren">(</span><em>screen</em><span class="sig-paren">)</span><a class="headerlink" href="#personage.Player" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pygame.sprite.Sprite</span></code></p>
 <p>This class defines the player.</p>
 <p>METHODS</p>
@@ -200,44 +130,26 @@
 <div class="line"><br /></div>
 </div>
 <p>ATTRIBUTES</p>
-<dl class="py attribute">
-<dt id="personage.Player.image">
-<code class="sig-name descname">image</code><em class="property">: object</em><a class="headerlink" href="#personage.Player.image" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="sig-name descname">The player image.</code></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="personage.Player.rect">
-<code class="sig-name descname">rect</code><em class="property">: object</em><a class="headerlink" href="#personage.Player.rect" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="sig-name descname">The rect of player surface.</code></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="personage.Player.speed_x">
-<code class="sig-name descname">speed_x</code><em class="property">: int</em><em class="property"> = 8</em><a class="headerlink" href="#personage.Player.speed_x" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="sig-name descname">The speed of horizontal player moving.</code></dt>
-<dd></dd></dl>
-
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<dl class="py method">
+<dl class="method">
 <dt id="personage.Player.shoot">
-<code class="sig-name descname">shoot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bullet_img</span></em><span class="sig-paren">)</span><a class="headerlink" href="#personage.Player.shoot" title="Permalink to this definition">¶</a></dt>
+<code class="descname">shoot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#personage.Player.shoot" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="personage.Player.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">screen</span></em><span class="sig-paren">)</span><a class="headerlink" href="#personage.Player.update" title="Permalink to this definition">¶</a></dt>
+<code class="descname">update</code><span class="sig-paren">(</span><em>screen</em><span class="sig-paren">)</span><a class="headerlink" href="#personage.Player.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method defines player updating.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>object screen: The player rendering screen.</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Param:</th><td class="field-body">object screen: The player rendering screen.</td>
+</tr>
+</tbody>
+</table>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -267,6 +179,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">space_shooter</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="colors.html">colors module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface.html">interface module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">personage module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="space_shooter.html">space_shooter module</a></li>
 </ul>
@@ -278,22 +191,24 @@
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
   <li><a href="modules.html">space_shooter</a><ul>
-      <li>Previous: <a href="colors.html" title="previous chapter">colors module</a></li>
+      <li>Previous: <a href="interface.html" title="previous chapter">interface module</a></li>
       <li>Next: <a href="space_shooter.html" title="next chapter">space_shooter module</a></li>
   </ul></li>
   </ul></li>
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -302,7 +217,7 @@
       &copy;2022, Ovod18.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |

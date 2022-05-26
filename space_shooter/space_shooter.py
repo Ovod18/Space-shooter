@@ -87,16 +87,20 @@ def main():
             score += 1
 
         # Check collision with player and mobs.
-        hits = pygame.sprite.spritecollide(player, mobs, False,
+        hits = pygame.sprite.spritecollide(player, mobs, True,
                                            pygame.sprite.collide_circle)
-        if hits:
-            running = False
+        for hit in hits:
+            player.shield -= 10
+            new_mob(screen)
+            if player.shield <= 0:
+                running = False
 
         # Rendering
         #screen.fill(colors.BLACK)
         screen.blit(bg_img, bg_rect)
         all_sprites.draw(screen)
         interface.draw_text(screen, str(score), 18, WIDTH/2, 10)
+        interface.draw_shield_bar(screen, 5, 5, player.shield)
         pygame.display.flip()
 
     pygame.quit()

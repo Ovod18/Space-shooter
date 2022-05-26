@@ -28,6 +28,8 @@ class Player(pygame.sprite.Sprite):
 
     :py:meth:`Player.update()`
 
+    :py:meth:`Player.shoot()`
+
     |
 
     ATTRIBUTES
@@ -42,6 +44,10 @@ class Player(pygame.sprite.Sprite):
         The speed of horizontal player moving.
         :type: int
         :value: 8
+    .. py:attribute:: shield
+        The player health.
+        :type: int
+        :value: 100
 
     |
     """
@@ -62,6 +68,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.centerx = screen_w / 2
         self.rect.bottom = screen_h - 10
         self.speed_x = 0
+        self.shield = 100
 
     def update(self, screen):
         """This method defines player updating.
@@ -86,6 +93,7 @@ class Player(pygame.sprite.Sprite):
             self.rect.left = 0
 
     def shoot(self):
+        """This method defines player shooting."""
         bullet = Bullet(self.rect.centerx, self.rect.top)
         return bullet
 

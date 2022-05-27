@@ -72,9 +72,9 @@ def main():
             # Player shooting.
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    bullet = player.shoot()
-                    all_sprites.add(bullet)
-                    bullets.add(bullet)
+                    bullet = player.shoot(all_sprites, bullets)
+                    #all_sprites.add(bullet)
+                    #bullets.add(bullet)
 
         all_sprites.update(screen)
 

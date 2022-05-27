@@ -15,6 +15,7 @@ CLASSES
 """
 
 import pygame
+import space_shooter
 import colors
 import random
 from os import path
@@ -59,7 +60,7 @@ class Player(pygame.sprite.Sprite):
         self.image.set_colorkey(colors.BLACK)
         self.rect = self.image.get_rect()
         self.radius = self.rect.width / 2
-        # Check collision area.
+        # Check and draw collision area.
         #pygame.draw.circle(self.image, colors.RED,
         #                   self.rect.center, self.radius)
         screen_size = screen.get_size()
@@ -92,9 +93,9 @@ class Player(pygame.sprite.Sprite):
         if self.rect.left < 0:
             self.rect.left = 0
 
-    def shoot(self):
+    def shoot(self, *args):
         """This method defines player shooting."""
-        bullet = Bullet(self.rect.centerx, self.rect.top)
+        bullet = Bullet(self.rect.centerx, self.rect.top, args)
         return bullet
 
 class Mob(pygame.sprite.Sprite):
@@ -224,7 +225,7 @@ class Bullet(pygame.sprite.Sprite):
     |
     """
 
-    def __init__(self, x, y):
+    def __init__(self, x, y, *args):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(path.join(IMG_DIR,
                                                  "bullet.png")).convert()
@@ -233,6 +234,9 @@ class Bullet(pygame.sprite.Sprite):
         self.rect.bottom = y
         self.rect.centerx = x
         self.speed_y = -10
+        # Adding a bullet to groups (in args).
+        for group in args:
+            self.add(group)
 
     def update(self, screen):
         """This method defines bullet updating.

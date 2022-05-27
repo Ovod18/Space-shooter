@@ -53,5 +53,5 @@ def draw_shield_bar(surface, x, y, pct):
         color = colors.GREEN
     outline_rect = pygame.Rect(x, y, BAR_LENGTH, BAR_HEIGHT)
     fill_rect = pygame.Rect(x, y, fill, BAR_HEIGHT)
-    pygame.draw.rect(surf, color, fill_rect)
-    pygame.draw.rect(surf, colors.WHITE, outline_rect, 2)
+    pygame.draw.rect(surface, color, fill_rect)
+    pygame.draw.rect(surface, colors.WHITE, outline_rect, 2)

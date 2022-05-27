@@ -69,12 +69,11 @@ def main():
             # Check closing main window event
             if event.type == pygame.QUIT:
                 running = False
-            # Player shooting.
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
-                    bullet = player.shoot(all_sprites, bullets)
-                    #all_sprites.add(bullet)
-                    #bullets.add(bullet)
+
+        # Player shooting.
+        keystate = pygame.key.get_pressed()
+        if keystate[pygame.K_SPACE]:
+            player.shoot(all_sprites, bullets)
 
         all_sprites.update(screen)
 

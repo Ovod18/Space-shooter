@@ -70,6 +70,8 @@ class Player(pygame.sprite.Sprite):
         self.rect.bottom = screen_h - 10
         self.speed_x = 0
         self.shield = 100
+        self.shoot_delay = 250
+        self.last_shot = pygame.time.get_ticks()
 
     def update(self, screen):
         """This method defines player updating.
@@ -92,11 +94,15 @@ class Player(pygame.sprite.Sprite):
             self.rect.right = screen_w
         if self.rect.left < 0:
             self.rect.left = 0
+        #if keystate[pygame.K_SPACE]:
+        #    self.shoot()
 
     def shoot(self, *args):
         """This method defines player shooting."""
-        bullet = Bullet(self.rect.centerx, self.rect.top, args)
-        return bullet
+        now = pygame.time.get_ticks()
+        if now - self.last_shot > self.shoot_delay:
+            self.last_shot = now
+            bullet = Bullet(self.rect.centerx, self.rect.top, args)
 
 class Mob(pygame.sprite.Sprite):
     """This class defines a mob.

@@ -49,7 +49,7 @@
 </div>
 <dl class="py class">
 <dt class="sig sig-object py" id="personage.Bullet">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">personage.</span></span><span class="sig-name descname"><span class="pre">Bullet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#personage.Bullet" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">personage.</span></span><span class="sig-name descname"><span class="pre">Bullet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#personage.Bullet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pygame.sprite.Sprite</span></code></p>
 <p>This class defines a bullet.</p>
 <p>METHODS</p>
@@ -229,12 +229,26 @@
 <span class="sig-name descname"><span class="pre">The</span> <span class="pre">player</span> <span class="pre">health.</span></span></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="personage.Player.shoot_delay">
+<span class="sig-name descname"><span class="pre">shoot_delay</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">250</span></em><a class="headerlink" href="#personage.Player.shoot_delay" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Delay</span> <span class="pre">between</span> <span class="pre">shots.</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="personage.Player.last_shot">
+<span class="sig-name descname"><span class="pre">last_shot</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#personage.Player.last_shot" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Time</span> <span class="pre">of</span> <span class="pre">last</span> <span class="pre">shot.</span></span></dt>
+<dd></dd></dl>
+
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="personage.Player.shoot">
-<span class="sig-name descname"><span class="pre">shoot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#personage.Player.shoot" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">shoot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#personage.Player.shoot" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method defines player shooting.</p>
 </dd></dl>
 

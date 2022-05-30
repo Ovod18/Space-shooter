@@ -49,27 +49,39 @@ class Player(pygame.sprite.Sprite):
         The player health.
         :type: int
         :value: 100
+    .. py:attribute:: shoot_delay
+        Delay between shots.
+        :type: int
+        :value: 250
+    .. py:attribute:: last_shot
+        Time of last shot.
+        :type: int
 
     |
     """
 
     def __init__(self, screen):
         pygame.sprite.Sprite.__init__(self)
+        # Loading player image.
         self.image = pygame.image.load(path.join(IMG_DIR,
                                                  "rocket.png")).convert()
         self.image.set_colorkey(colors.BLACK)
-        self.rect = self.image.get_rect()
-        self.radius = self.rect.width / 2
         # Check and draw collision area.
         #pygame.draw.circle(self.image, colors.RED,
         #                   self.rect.center, self.radius)
+        # Screen area.
         screen_size = screen.get_size()
         screen_w = screen_size[0]
         screen_h = screen_size[1]
+        # Player rect.
+        self.rect = self.image.get_rect()
+        self.radius = self.rect.width / 2
         self.rect.centerx = screen_w / 2
         self.rect.bottom = screen_h - 10
         self.speed_x = 0
+        # Player health.
         self.shield = 100
+        # Autoshooting.
         self.shoot_delay = 250
         self.last_shot = pygame.time.get_ticks()
 

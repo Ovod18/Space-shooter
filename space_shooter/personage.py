@@ -31,6 +31,9 @@ class Player(pygame.sprite.Sprite):
 
     :py:meth:`Player.shoot()`
 
+    :py:meth:`Player.hide()`
+
+
     |
 
     ATTRIBUTES
@@ -56,9 +59,23 @@ class Player(pygame.sprite.Sprite):
     .. py:attribute:: last_shot
         Time of last shot.
         :type: int
+    .. py:attribute:: lives
+        Count of player lives.
+        :type: int
+        :value: 3
+    .. py:attribute:: hidden
+        The flag of player hiding.
+        :type: boolean
+        :value: False
+    .. py:attribute:: hide_timer
+        Time of last player hiding.
+        :type: int
 
     |
     """
+
+    screen_w = space_shooter.WIDTH
+    screen_h = space_shooter.HEIGHT
 
     def __init__(self, screen):
         pygame.sprite.Sprite.__init__(self)
@@ -66,21 +83,26 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.image.load(path.join(IMG_DIR,
                                                  "rocket.png")).convert()
         self.image.set_colorkey(colors.BLACK)
+        # Loading player mini image.
+        player_mini_img = pygame.transform.scale(self.image, (25, 19))
+        player_mini_img.set_colorkey(colors.BLACK)
         # Check and draw collision area.
         #pygame.draw.circle(self.image, colors.RED,
         #                   self.rect.center, self.radius)
         # Screen area.
         screen_size = screen.get_size()
-        screen_w = screen_size[0]
-        screen_h = screen_size[1]
         # Player rect.
         self.rect = self.image.get_rect()
         self.radius = self.rect.width / 2
-        self.rect.centerx = screen_w / 2
-        self.rect.bottom = screen_h - 10
+        self.rect.centerx = Player.screen_w / 2
+        self.rect.bottom = Player.screen_h - 10
         self.speed_x = 0
         # Player health.
         self.shield = 100
+        self.lives = 3
+        # Player visibility.
+        self.hidden = False
+        self.hide_timer = pygame.time.get_ticks()
         # Autoshooting.
         self.shoot_delay = 250
         self.last_shot = pygame.time.get_ticks()
@@ -92,9 +114,15 @@ class Player(pygame.sprite.Sprite):
 
         |
         """
+        # Show the player in start point, if it is hidden. 
+        if self.hidden and pygame.time.get_ticks() - self.hide_timer > 1000:
+            self.hidden = False
+            self.rect.centerx = Player.screen_w / 2
+            self.rect.bottom = Player.screen_h - 10
+
         screen_size = screen.get_size()
-        screen_w = screen_size[0]
-        screen_h = screen_size[1]
+        #screen_w = screen_size[0]
+        #screen_h = screen_size[1]
         self.speed_x = 0
         keystate = pygame.key.get_pressed()
         if keystate[pygame.K_RIGHT]:
@@ -102,12 +130,21 @@ class Player(pygame.sprite.Sprite):
         if keystate[pygame.K_LEFT]:
             self.speed_x = -6
         self.rect.x += self.speed_x
-        if self.rect.right > screen_w:
-            self.rect.right = screen_w
+        if self.rect.right > Player.screen_w:
+            self.rect.right = Player.screen_w
         if self.rect.left < 0:
             self.rect.left = 0
         #if keystate[pygame.K_SPACE]:
         #    self.shoot()
+
+    def hide(self):
+        """This method defines player hiding.
+
+        |
+        """
+        self.hidden = True
+        self.hide_timer = pygame.time.get_ticks()
+        self.rect.center = (Player.screen_w / 2, Player.screen_h + 200)
 
     def shoot(self, *args):
         """This method defines player shooting.
@@ -180,7 +217,7 @@ class Mob(pygame.sprite.Sprite):
         self.rect.x = random.randrange(screen_w - self.rect.width)
         self.rect.y = random.randrange(-100, -40)
         self.speedx = random.randrange(-2, 2)
-        self.speedy = random.randrange(1, 3)
+        self.speedy = random.randrange(1, 5)
         self.rot = 0
         self.rot_speed = random.randrange(-8, 8)
         self.last_update = pygame.time.get_ticks()

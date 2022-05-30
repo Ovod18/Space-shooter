@@ -91,7 +91,13 @@ def main():
         for hit in hits:
             player.shield -= 10
             new_mob(screen)
+            # Decrease player lives by 1.
             if player.shield <= 0:
+                player.hide()
+                player.lives -= 1
+                player.shield = 100
+            # Game over.
+            if player.lives == 0:
                 running = False
 
         # Rendering

@@ -121,8 +121,6 @@ class Player(pygame.sprite.Sprite):
             self.rect.bottom = Player.screen_h - 10
 
         screen_size = screen.get_size()
-        #screen_w = screen_size[0]
-        #screen_h = screen_size[1]
         self.speed_x = 0
         keystate = pygame.key.get_pressed()
         if keystate[pygame.K_RIGHT]:

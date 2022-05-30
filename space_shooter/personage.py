@@ -110,7 +110,12 @@ class Player(pygame.sprite.Sprite):
         #    self.shoot()
 
     def shoot(self, *args):
-        """This method defines player shooting."""
+        """This method defines player shooting.
+
+        :param: object args: Groups of sprites, where a bullet will be added.
+
+        |
+        """
         now = pygame.time.get_ticks()
         if now - self.last_shot > self.shoot_delay:
             self.last_shot = now

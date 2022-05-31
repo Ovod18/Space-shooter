@@ -7,6 +7,7 @@
 """
 
 import pygame
+import space_shooter
 import colors
 
 def draw_text(surface, text, size, x, y):
@@ -55,3 +56,17 @@ def draw_shield_bar(surface, x, y, pct):
     fill_rect = pygame.Rect(x, y, fill, BAR_HEIGHT)
     pygame.draw.rect(surface, color, fill_rect)
     pygame.draw.rect(surface, colors.WHITE, outline_rect, 2)
+
+def draw_lives(surface, lives, img):
+    """
+
+    |
+    """
+    for i in range(lives):
+        """
+        img_rect = img.get_rect()
+        img_rect.x = space_shooter.WIDTH + 30 * i
+        img_rect.y = 5
+        surface.blit(img, img_rect)
+        """
+        pygame.draw.circle(surface, colors.BLUE, (350+20*i, 10), 10)

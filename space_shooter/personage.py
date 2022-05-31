@@ -41,6 +41,9 @@ class Player(pygame.sprite.Sprite):
     .. py:attribute:: image
         The player image.
         :type: object
+    .. py:attribute:: mini_image
+        The player icon.
+        :type: object
     .. py:attribute:: rect
         The rect of player surface.
         :type: object
@@ -84,8 +87,8 @@ class Player(pygame.sprite.Sprite):
                                                  "rocket.png")).convert()
         self.image.set_colorkey(colors.BLACK)
         # Loading player mini image.
-        player_mini_img = pygame.transform.scale(self.image, (25, 19))
-        player_mini_img.set_colorkey(colors.BLACK)
+        self.mini_img = pygame.transform.scale(self.image, (25, 19))
+        self.mini_img.set_colorkey(colors.BLACK)
         # Check and draw collision area.
         #pygame.draw.circle(self.image, colors.RED,
         #                   self.rect.center, self.radius)

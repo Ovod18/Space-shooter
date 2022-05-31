@@ -58,15 +58,15 @@ def draw_shield_bar(surface, x, y, pct):
     pygame.draw.rect(surface, colors.WHITE, outline_rect, 2)
 
 def draw_lives(surface, lives, img):
-    """
+    """Rendering player lives on the surface.
 
     |
     """
     for i in range(lives):
-        """
         img_rect = img.get_rect()
         img_rect.x = space_shooter.WIDTH + 30 * i
         img_rect.y = 5
-        surface.blit(img, img_rect)
+        surface.blit(img, (320+25*i, 5))
         """
         pygame.draw.circle(surface, colors.BLUE, (350+20*i, 10), 10)
+        """

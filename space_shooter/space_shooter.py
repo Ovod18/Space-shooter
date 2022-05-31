@@ -106,7 +106,7 @@ def main():
         all_sprites.draw(screen)
         interface.draw_text(screen, str(score), 18, WIDTH/2, 10)
         interface.draw_shield_bar(screen, 5, 5, player.shield)
-        interface.draw_lives(screen, player.lives, player.image)
+        interface.draw_lives(screen, player.lives, player.mini_img)
         pygame.display.flip()
 
     pygame.quit()

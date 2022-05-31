@@ -1,13 +1,20 @@
-"""This module contains functions for drawing game interface.
+"""This module contains interface rendering functions.
 
 :platform: Linux
 :author: Ovod18
 
-    |
+FUNCTIONS
+
+:py:func:`.draw_text`
+
+:py:func:`.draw_shield_bar`
+
+:py:func:`.draw_lives`
+
+|
 """
 
 import pygame
-import space_shooter
 import colors
 
 def draw_text(surface, text, size, x, y):
@@ -55,18 +62,26 @@ def draw_shield_bar(surface, x, y, pct):
     outline_rect = pygame.Rect(x, y, BAR_LENGTH, BAR_HEIGHT)
     fill_rect = pygame.Rect(x, y, fill, BAR_HEIGHT)
     pygame.draw.rect(surface, color, fill_rect)
+    # Draw a border.
     pygame.draw.rect(surface, colors.WHITE, outline_rect, 2)
 
 def draw_lives(surface, lives, img):
     """Rendering player lives on the surface.
 
+    :param: surface: a surface for drowing lives
+    :type: surface: object
+    :param: lives: number of lives
+    :type: lives: int
+    :param: img: player icon
+    :type: img: object
+
     |
     """
     for i in range(lives):
         img_rect = img.get_rect()
-        img_rect.x = space_shooter.WIDTH + 30 * i
+        img_rect.x = surface.get_width() - 80 + 25 * i
         img_rect.y = 5
-        surface.blit(img, (320+25*i, 5))
+        surface.blit(img, (img_rect.x, img_rect.y))
         """
         pygame.draw.circle(surface, colors.BLUE, (350+20*i, 10), 10)
         """

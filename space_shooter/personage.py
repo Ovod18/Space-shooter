@@ -15,7 +15,6 @@ CLASSES
 """
 
 import pygame
-import space_shooter
 import colors
 import random
 from os import path
@@ -76,9 +75,8 @@ class Player(pygame.sprite.Sprite):
 
     |
     """
-
-    screen_w = space_shooter.WIDTH
-    screen_h = space_shooter.HEIGHT
+    screen_w = 0
+    screen_h = 0
 
     def __init__(self, screen):
         pygame.sprite.Sprite.__init__(self)
@@ -97,6 +95,8 @@ class Player(pygame.sprite.Sprite):
         # Player rect.
         self.rect = self.image.get_rect()
         self.radius = self.rect.width / 2
+        Player.screen_w = screen.get_width()
+        Player.screen_h = screen.get_height()
         self.rect.centerx = Player.screen_w / 2
         self.rect.bottom = Player.screen_h - 10
         self.speed_x = 0

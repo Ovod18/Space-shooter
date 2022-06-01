@@ -3,7 +3,23 @@
 :platform: Linux
 :author: Ovod18
 
-    |
+FUNCTIONS
+
+:py:func:`.new_mob`
+
+:py:func:`.main`
+
+CONSTANTS
+
+:py:data:`.WIDTH`
+
+:py:data:`.HEIGHT`
+
+:py:data:`.FPS`
+
+:py:data:`.IMG_DIR`
+
+|
 """
 
 import pygame
@@ -14,9 +30,16 @@ import colors
 import interface
 
 WIDTH = 400
+"""The screen width in pixels."""
+
 HEIGHT = 600
+"""The screen height in pixels."""
+
 FPS = 60
+"""The frame rate."""
+
 IMG_DIR = path.join(path.dirname(__file__), 'img')
+"""The directory for loading images."""
 
 # Create the main window.
 pygame.init()
@@ -33,6 +56,13 @@ mobs = pygame.sprite.Group()
 bullets = pygame.sprite.Group()
 
 def new_mob(surface):
+    """Generating new mob.
+
+    :param: surface: a surface for generating new mob
+    :type: surface: object
+
+    |
+    """
     # Mobs generation.
     m = personage.Mob(surface)
     all_sprites.add(m)

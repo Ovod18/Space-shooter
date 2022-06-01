@@ -11,6 +11,10 @@ CLASSES
 
 :py:class:`.Bullet`
 
+CONSTANTS
+
+:py:data:`.IMG_DIR`
+
 |
 """
 
@@ -20,6 +24,7 @@ import random
 from os import path
 
 IMG_DIR = path.join(path.dirname(__file__), 'img')
+"""The directory for loading images."""
 
 class Player(pygame.sprite.Sprite):
     """This class defines the player.

@@ -57,8 +57,7 @@ def main():
     """
 
     # Rendering background.
-    bg_rect = graphics.bg_img.get_rect()
-    screen.blit(graphics.bg_img, bg_rect)
+    graphics.draw_bg()
     pygame.display.flip()
 
     player = personage.Player(screen)
@@ -112,7 +111,7 @@ def main():
 
         # Rendering
         #screen.fill(colors.BLACK)
-        screen.blit(graphics.bg_img, bg_rect)
+        graphics.draw_bg()
         all_sprites.draw(screen)
         graphics.draw_text(screen, str(score), 18, graphics.WIDTH/2, 10)
         graphics.draw_shield_bar(screen, 5, 5, player.shield)

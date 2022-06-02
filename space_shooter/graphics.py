@@ -11,6 +11,8 @@ FUNCTIONS
 
 :py:func:`.draw_lives`
 
+:py:func:`.draw_bg`
+
 CONSTANTS
 
 :py:data:`.WIDTH`
@@ -42,6 +44,15 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Space_shooter")
 
 bg_img = pygame.image.load(path.join(IMG_DIR, "background.png")).convert()
+"""Background image."""
+
+def draw_bg():
+    """Rendering background.
+
+    |
+    """
+    bg_rect = bg_img.get_rect()
+    screen.blit(bg_img, bg_rect)
 
 def draw_text(surface, text, size, x, y):
     """Rendering text on the surface.

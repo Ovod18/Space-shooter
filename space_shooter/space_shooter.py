@@ -60,12 +60,12 @@ def main():
     graphics.draw_bg()
     pygame.display.flip()
 
-    player = personage.Player(screen)
+    player = personage.Player(graphics.screen)
     all_sprites.add(player)
 
 
     for i in range(8):
-        new_mob(screen)
+        new_mob(graphics.screen)
 
     score = 0
 
@@ -84,12 +84,12 @@ def main():
         if keystate[pygame.K_SPACE]:
             player.shoot(all_sprites, bullets)
 
-        all_sprites.update(screen)
+        all_sprites.update(graphics.screen)
 
         # Check collision with bullets and mobs.
         hits = pygame.sprite.groupcollide(mobs, bullets, True, True)
         for hit in hits:
-            m = personage.Mob(screen)
+            m = personage.Mob(graphics.screen)
             all_sprites.add(m)
             mobs.add(m)
             score += 1
@@ -99,7 +99,7 @@ def main():
                                            pygame.sprite.collide_circle)
         for hit in hits:
             player.health -= 10
-            new_mob(screen)
+            new_mob(graphics.screen)
             # Decrease player lives by 1.
             if player.health  <= 0:
                 player.hide()
@@ -111,10 +111,10 @@ def main():
 
         # Rendering
         graphics.draw_bg()
-        all_sprites.draw(screen)
-        graphics.draw_text(screen, str(score), 18, graphics.WIDTH/2, 10)
-        graphics.draw_health_bar(screen, 5, 5, player.health)
-        graphics.draw_lives(screen, player.lives, player.mini_img)
+        all_sprites.draw(graphics.screen)
+        graphics.draw_score(score)
+        graphics.draw_health_bar(player.health)
+        graphics.draw_lives(player.lives, player.mini_img)
         pygame.display.flip()
 
     pygame.quit()

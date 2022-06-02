@@ -41,7 +41,7 @@
 </dd>
 </dl>
 <p>FUNCTIONS</p>
-<p><a class="reference internal" href="#graphics.draw_text" title="graphics.draw_text"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw_text()</span></code></a></p>
+<p><a class="reference internal" href="#graphics.draw_score" title="graphics.draw_score"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw_score()</span></code></a></p>
 <p><a class="reference internal" href="#graphics.draw_health_bar" title="graphics.draw_health_bar"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw_health_bar()</span></code></a></p>
 <p><a class="reference internal" href="#graphics.draw_lives" title="graphics.draw_lives"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw_lives()</span></code></a></p>
 <p><a class="reference internal" href="#graphics.draw_bg" title="graphics.draw_bg"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw_bg()</span></code></a></p>
@@ -88,26 +88,14 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="graphics.draw_health_bar">
-<span class="sig-prename descclassname"><span class="pre">graphics.</span></span><span class="sig-name descname"><span class="pre">draw_health_bar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surface</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pct</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.draw_health_bar" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">graphics.</span></span><span class="sig-name descname"><span class="pre">draw_health_bar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">percent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.draw_health_bar" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rendering player health on the surface.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>surface: a surface for drowing text</p>
+<dd class="field-odd"><p>percent: percent of player health</p>
 </dd>
 <dt class="field-even">Type</dt>
-<dd class="field-even"><p>surface: object</p>
-</dd>
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>x,y: the coordinates for drowing text</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>x,y: int</p>
-</dd>
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>pct: percent of player health</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>pct: int</p>
+<dd class="field-even"><p>percent: int</p>
 </dd>
 </dl>
 <div class="line-block">
@@ -117,15 +105,9 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="graphics.draw_lives">
-<span class="sig-prename descclassname"><span class="pre">graphics.</span></span><span class="sig-name descname"><span class="pre">draw_lives</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surface</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lives</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.draw_lives" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">graphics.</span></span><span class="sig-name descname"><span class="pre">draw_lives</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lives</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">icon</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.draw_lives" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rendering player lives on the surface.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>surface: a surface for drowing lives</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>surface: object</p>
-</dd>
 <dt class="field-odd">Param</dt>
 <dd class="field-odd"><p>lives: number of lives</p>
 </dd>
@@ -133,10 +115,10 @@
 <dd class="field-even"><p>lives: int</p>
 </dd>
 <dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>img: player icon</p>
+<dd class="field-odd"><p>icon: player icon</p>
 </dd>
 <dt class="field-even">Type</dt>
-<dd class="field-even"><p>img: object</p>
+<dd class="field-even"><p>icon: object</p>
 </dd>
 </dl>
 <div class="line-block">
@@ -145,33 +127,15 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="graphics.draw_text">
-<span class="sig-prename descclassname"><span class="pre">graphics.</span></span><span class="sig-name descname"><span class="pre">draw_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surface</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.draw_text" title="Permalink to this definition">¶</a></dt>
-<dd><p>Rendering text on the surface.</p>
+<dt class="sig sig-object py" id="graphics.draw_score">
+<span class="sig-prename descclassname"><span class="pre">graphics.</span></span><span class="sig-name descname"><span class="pre">draw_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">score</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.draw_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rendering text on the screen.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>surface: a surface for drowing text</p>
+<dd class="field-odd"><p>score: value for drowing</p>
 </dd>
 <dt class="field-even">Type</dt>
-<dd class="field-even"><p>surface: object</p>
-</dd>
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>text: text for drowing</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>text: str</p>
-</dd>
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>size: text size</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>size: int</p>
-</dd>
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>x,y: the coordinates for drowing text</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>size: int</p>
+<dd class="field-even"><p>text: int</p>
 </dd>
 </dl>
 <div class="line-block">

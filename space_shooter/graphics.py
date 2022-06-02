@@ -5,7 +5,7 @@
 
 FUNCTIONS
 
-:py:func:`.draw_text`
+:py:func:`.draw_score`
 
 :py:func:`.draw_health_bar`
 
@@ -54,71 +54,62 @@ def draw_bg():
     bg_rect = bg_img.get_rect()
     screen.blit(bg_img, bg_rect)
 
-def draw_text(surface, text, size, x, y):
-    """Rendering text on the surface.
+def draw_score(score):
+    """Rendering text on the screen.
 
-    :param: surface: a surface for drowing text
-    :type: surface: object
-    :param: text: text for drowing
-    :type: text: str
-    :param: size: text size
-    :type: size: int
-    :param: x,y: the coordinates for drowing text
-    :type: size: int
+    :param: score: value for drowing
+    :type: text: int
 
     |
     """
+    x = WIDTH / 2
+    y = 10
+    size = 18
+    score = str(score)
     font_name = pygame.font.match_font('arial')
     font = pygame.font.Font(font_name, size)
-    text_surface = font.render(text, True, colors.RED)
+    text_surface = font.render(score, True, colors.RED)
     text_rect = text_surface.get_rect()
     text_rect.midtop = (x, y)
-    surface.blit(text_surface, text_rect)
+    screen.blit(text_surface, text_rect)
 
-def draw_health_bar(surface, x, y, pct):
+def draw_health_bar(percent):
     """Rendering player health on the surface.
 
-    :param: surface: a surface for drowing text
-    :type: surface: object
-    :param: x,y: the coordinates for drowing text
-    :type: x,y: int
-    :param: pct: percent of player health
-    :type: pct: int
+    :param: percent: percent of player health
+    :type: percent: int
 
     |
     """
-    if pct < 0:
-        pct = 0
+    x = 5
+    y = 5
+    if percent < 0:
+        percent = 0
     BAR_LENGTH = 100
     BAR_HEIGHT = 10
-    fill = (pct / 100) * BAR_LENGTH
+    fill = (percent / 100) * BAR_LENGTH
     if fill <= 30:
         color = colors.RED
     else:
         color = colors.GREEN
-    outline_rect = pygame.Rect(x, y, BAR_LENGTH, BAR_HEIGHT)
+    border_rect = pygame.Rect(x, y, BAR_LENGTH, BAR_HEIGHT)
     fill_rect = pygame.Rect(x, y, fill, BAR_HEIGHT)
-    pygame.draw.rect(surface, color, fill_rect)
+    pygame.draw.rect(screen, color, fill_rect)
     # Draw a border.
-    pygame.draw.rect(surface, colors.WHITE, outline_rect, 2)
+    pygame.draw.rect(screen, colors.WHITE, border_rect, 2)
 
-def draw_lives(surface, lives, img):
+def draw_lives(lives, icon):
     """Rendering player lives on the surface.
 
-    :param: surface: a surface for drowing lives
-    :type: surface: object
     :param: lives: number of lives
     :type: lives: int
-    :param: img: player icon
-    :type: img: object
+    :param: icon: player icon
+    :type: icon: object
 
     |
     """
     for i in range(lives):
-        img_rect = img.get_rect()
-        img_rect.x = surface.get_width() - 80 + 25 * i
-        img_rect.y = 5
-        surface.blit(img, (img_rect.x, img_rect.y))
-        """
-        pygame.draw.circle(surface, colors.BLUE, (350+20*i, 10), 10)
-        """
+        icon_rect = icon.get_rect()
+        icon_rect.x = WIDTH - 80 + 25 * i
+        icon_rect.y = 5
+        screen.blit(icon, (icon_rect.x, icon_rect.y))

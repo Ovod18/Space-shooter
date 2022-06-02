@@ -5,6 +5,6 @@ space_shooter
    :maxdepth: 4
 
    colors
-   interface
+   graphics
    personage
    space_shooter

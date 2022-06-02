@@ -9,46 +9,26 @@ FUNCTIONS
 
 :py:func:`.main`
 
-CONSTANTS
-
-:py:data:`.WIDTH`
-
-:py:data:`.HEIGHT`
-
-:py:data:`.FPS`
-
-:py:data:`.IMG_DIR`
-
 |
 """
 
+from os import path
 import pygame
 import random
-from os import path
 import personage
 import colors
-import interface
-
-WIDTH = 400
-"""The screen width in pixels."""
-
-HEIGHT = 600
-"""The screen height in pixels."""
+import graphics
 
 FPS = 60
 """The frame rate."""
 
-IMG_DIR = path.join(path.dirname(__file__), 'img')
-"""The directory for loading images."""
-
-# Create the main window.
+# Init the pygame and sounds.
 pygame.init()
 pygame.mixer.init()
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Space_shooter")
+
 clock = pygame.time.Clock()
 
-bg_img = pygame.image.load(path.join(IMG_DIR, "background.png")).convert()
+screen = graphics.screen
 
 # Creating sprites groups.
 all_sprites = pygame.sprite.Group()
@@ -77,8 +57,8 @@ def main():
     """
 
     # Rendering background.
-    bg_rect = bg_img.get_rect()
-    screen.blit(bg_img, bg_rect)
+    bg_rect = graphics.bg_img.get_rect()
+    screen.blit(graphics.bg_img, bg_rect)
     pygame.display.flip()
 
     player = personage.Player(screen)
@@ -132,11 +112,11 @@ def main():
 
         # Rendering
         #screen.fill(colors.BLACK)
-        screen.blit(bg_img, bg_rect)
+        screen.blit(graphics.bg_img, bg_rect)
         all_sprites.draw(screen)
-        interface.draw_text(screen, str(score), 18, WIDTH/2, 10)
-        interface.draw_shield_bar(screen, 5, 5, player.shield)
-        interface.draw_lives(screen, player.lives, player.mini_img)
+        graphics.draw_text(screen, str(score), 18, graphics.WIDTH/2, 10)
+        graphics.draw_shield_bar(screen, 5, 5, player.shield)
+        graphics.draw_lives(screen, player.lives, player.mini_img)
         pygame.display.flip()
 
     pygame.quit()

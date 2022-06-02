@@ -7,7 +7,7 @@ FUNCTIONS
 
 :py:func:`.draw_text`
 
-:py:func:`.draw_shield_bar`
+:py:func:`.draw_health_bar`
 
 :py:func:`.draw_lives`
 
@@ -75,7 +75,7 @@ def draw_text(surface, text, size, x, y):
     text_rect.midtop = (x, y)
     surface.blit(text_surface, text_rect)
 
-def draw_shield_bar(surface, x, y, pct):
+def draw_health_bar(surface, x, y, pct):
     """Rendering player health on the surface.
 
     :param: surface: a surface for drowing text

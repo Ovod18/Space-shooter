@@ -42,7 +42,7 @@
 </dl>
 <p>FUNCTIONS</p>
 <p><a class="reference internal" href="#graphics.draw_text" title="graphics.draw_text"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw_text()</span></code></a></p>
-<p><a class="reference internal" href="#graphics.draw_shield_bar" title="graphics.draw_shield_bar"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw_shield_bar()</span></code></a></p>
+<p><a class="reference internal" href="#graphics.draw_health_bar" title="graphics.draw_health_bar"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw_health_bar()</span></code></a></p>
 <p><a class="reference internal" href="#graphics.draw_lives" title="graphics.draw_lives"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw_lives()</span></code></a></p>
 <p><a class="reference internal" href="#graphics.draw_bg" title="graphics.draw_bg"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw_bg()</span></code></a></p>
 <p>CONSTANTS</p>
@@ -87,6 +87,35 @@
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="graphics.draw_health_bar">
+<span class="sig-prename descclassname"><span class="pre">graphics.</span></span><span class="sig-name descname"><span class="pre">draw_health_bar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surface</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pct</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.draw_health_bar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rendering player health on the surface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>surface: a surface for drowing text</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>surface: object</p>
+</dd>
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>x,y: the coordinates for drowing text</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>x,y: int</p>
+</dd>
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>pct: percent of player health</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>pct: int</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="graphics.draw_lives">
 <span class="sig-prename descclassname"><span class="pre">graphics.</span></span><span class="sig-name descname"><span class="pre">draw_lives</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surface</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lives</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.draw_lives" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rendering player lives on the surface.</p>
@@ -108,35 +137,6 @@
 </dd>
 <dt class="field-even">Type</dt>
 <dd class="field-even"><p>img: object</p>
-</dd>
-</dl>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="graphics.draw_shield_bar">
-<span class="sig-prename descclassname"><span class="pre">graphics.</span></span><span class="sig-name descname"><span class="pre">draw_shield_bar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surface</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pct</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.draw_shield_bar" title="Permalink to this definition">¶</a></dt>
-<dd><p>Rendering player health on the surface.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>surface: a surface for drowing text</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>surface: object</p>
-</dd>
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>x,y: the coordinates for drowing text</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>x,y: int</p>
-</dd>
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>pct: percent of player health</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>pct: int</p>
 </dd>
 </dl>
 <div class="line-block">

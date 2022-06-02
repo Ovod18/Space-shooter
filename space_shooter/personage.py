@@ -55,7 +55,7 @@ class Player(pygame.sprite.Sprite):
         The speed of horizontal player moving.
         :type: int
         :value: 8
-    .. py:attribute:: shield
+    .. py:attribute:: health
         The player health.
         :type: int
         :value: 100
@@ -106,7 +106,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.bottom = Player.screen_h - 10
         self.speed_x = 0
         # Player health.
-        self.shield = 100
+        self.health = 100
         self.lives = 3
         # Player visibility.
         self.hidden = False

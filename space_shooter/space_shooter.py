@@ -79,7 +79,7 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
 
-        # Player shooting.
+        # Player shooting (if K_SPACE is pressed).
         keystate = pygame.key.get_pressed()
         if keystate[pygame.K_SPACE]:
             player.shoot(all_sprites, bullets)
@@ -98,23 +98,22 @@ def main():
         hits = pygame.sprite.spritecollide(player, mobs, True,
                                            pygame.sprite.collide_circle)
         for hit in hits:
-            player.shield -= 10
+            player.health -= 10
             new_mob(screen)
             # Decrease player lives by 1.
-            if player.shield <= 0:
+            if player.health  <= 0:
                 player.hide()
                 player.lives -= 1
-                player.shield = 100
+                player.health = 100
             # Game over.
             if player.lives == 0:
                 running = False
 
         # Rendering
-        #screen.fill(colors.BLACK)
         graphics.draw_bg()
         all_sprites.draw(screen)
         graphics.draw_text(screen, str(score), 18, graphics.WIDTH/2, 10)
-        graphics.draw_shield_bar(screen, 5, 5, player.shield)
+        graphics.draw_health_bar(screen, 5, 5, player.health)
         graphics.draw_lives(screen, player.lives, player.mini_img)
         pygame.display.flip()
 

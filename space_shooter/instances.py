@@ -17,6 +17,7 @@ OBJECTS
 :py:data:`.bullets`
 
 :py:data:`.player`
+
 |
 """
 

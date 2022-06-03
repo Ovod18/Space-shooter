@@ -34,6 +34,8 @@ screen = graphics.screen
 all_sprites = pygame.sprite.Group()
 mobs = pygame.sprite.Group()
 bullets = pygame.sprite.Group()
+player = personage.Player(graphics.screen)
+all_sprites.add(player)
 
 def new_mob(surface):
     """Generating new mob.
@@ -49,7 +51,6 @@ def new_mob(surface):
     # Adding mob to the group.
     mobs.add(m)
 
-
 def main():
     """The main function in space_shooter
 
@@ -60,14 +61,11 @@ def main():
     graphics.draw_bg()
     pygame.display.flip()
 
-    player = personage.Player(graphics.screen)
-    all_sprites.add(player)
-
-
-    for i in range(8):
-        new_mob(graphics.screen)
-
     score = 0
+
+    # The first mobs generation.
+    for i in range(10):
+        new_mob(graphics.screen)
 
     # Create the game cycle.
     running = True

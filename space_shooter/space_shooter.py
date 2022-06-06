@@ -33,10 +33,6 @@ pygame.mixer.init()
 
 clock = pygame.time.Clock()
 
-screen = graphics.screen
-
-
-
 def main():
     """The main function in space_shooter
 
@@ -49,17 +45,17 @@ def main():
 
     score = 0
 
-    # The first instances.mobs.mobs generation.
-    for i in range(9):
+    # The first mobs generation.
+    for i in range(mobs_count := 9):
         instances.new_mob()
 
     # Create the game cycle.
     running = True
     while running:
         clock.tick(FPS)
-        # Check events
+        # Check events.
         for event in pygame.event.get():
-            # Check closing main window event
+            # Check closing main window event.
             if event.type == pygame.QUIT:
                 running = False
 
@@ -83,7 +79,7 @@ def main():
         if instances.player.lives == 0:
             running = False
 
-        # Rendering
+        # Rendering.
         graphics.draw_bg()
         instances.all_sprites.draw(graphics.screen)
         graphics.draw_score(score)

@@ -15,9 +15,7 @@ FUNCTIONS
 
 CONSTANTS
 
-:py:data:`.WIDTH`
-
-:py:data:`.HEIGHT`
+:py:data:`.SCREEN_SIZE`
 
 :py:data:`.FPS`
 
@@ -30,14 +28,8 @@ from os import path
 import pygame
 import colors
 
-WIDTH = 400
-"""The screen width in pixels.
-
-|
-"""
-
-HEIGHT = 600
-"""The screen height in pixels.
+SCREEN_SIZE = (WIDTH := 400, HEIGHT := 600)
+"""The screen size in px (WIDTH, HEIGHT)
 
 |
 """
@@ -49,7 +41,7 @@ IMG_DIR = path.join(path.dirname(__file__), 'img')
 """
 
 # Create the main window.
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
+screen = pygame.display.set_mode((SCREEN_SIZE))
 pygame.display.set_caption("Space_shooter")
 
 bg_img = pygame.image.load(path.join(IMG_DIR, "background.png")).convert()
@@ -66,6 +58,18 @@ def draw_bg():
     bg_rect = bg_img.get_rect()
     screen.blit(bg_img, bg_rect)
 
+def draw_text(text, pos, size, color):
+    """Writing text on the screen.
+
+    |
+    """
+    font_name = pygame.font.match_font('arial')
+    font = pygame.font.Font(font_name, size)
+    text_surface = font.render(text, True, color)
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (pos)
+    screen.blit(text_surface, text_rect)
+
 def draw_score(score):
     """Rendering text on the screen.
 
@@ -74,16 +78,7 @@ def draw_score(score):
 
     |
     """
-    x = WIDTH / 2
-    y = 10
-    size = 18
-    score = str(score)
-    font_name = pygame.font.match_font('arial')
-    font = pygame.font.Font(font_name, size)
-    text_surface = font.render(score, True, colors.RED)
-    text_rect = text_surface.get_rect()
-    text_rect.midtop = (x, y)
-    screen.blit(text_surface, text_rect)
+    draw_text(str(score), (pos := (WIDTH/2), 10), size := 18, colors.RED)
 
 def draw_health_bar(percent):
     """Rendering player health on the surface.
@@ -93,19 +88,18 @@ def draw_health_bar(percent):
 
     |
     """
-    x = 5
-    y = 5
+    pos = (5, 5)
     if percent < 0:
         percent = 0
-    BAR_LENGTH = 100
-    BAR_HEIGHT = 10
-    fill = (percent / 100) * BAR_LENGTH
+    bar_size = (bar_length := 100, bar_height := 10)
+    fill = (percent / 100) * bar_length
     if fill <= 30:
         color = colors.RED
     else:
         color = colors.GREEN
-    border_rect = pygame.Rect(x, y, BAR_LENGTH, BAR_HEIGHT)
-    fill_rect = pygame.Rect(x, y, fill, BAR_HEIGHT)
+    border_rect = pygame.Rect(*pos, *bar_size)
+    fill_rect = pygame.Rect(*pos, fill, bar_height)
+    # Draw an internal rect.
     pygame.draw.rect(screen, color, fill_rect)
     # Draw a border.
     pygame.draw.rect(screen, colors.WHITE, border_rect, 2)
@@ -121,7 +115,20 @@ def draw_lives(lives, icon):
     |
     """
     for i in range(lives):
-        icon_rect = icon.get_rect()
-        icon_rect.x = WIDTH - 80 + 25 * i
-        icon_rect.y = 5
-        screen.blit(icon, (icon_rect.x, icon_rect.y))
+        icon_pos = ((WIDTH - 80 + 25 * i), 5)
+        screen.blit(icon, (icon_pos))
+
+def draw_start_screen():
+    """Rendering the start screen.
+
+    |
+    """
+    """
+    screen.blit(bg_img, bg_rect)
+    draw_text(screen, "space shooter", 64, WIDTH / 2, HEIGHT / 4)
+    draw_text(screen, "Arrow keys move, Space to fire", 22,
+              WIDTH / 2, HEIGHT / 2)
+    draw_text(screen, "Press a key to begin", 18,
+              WIDTH / 2, HEIGHT * 3 / 4)
+    """
+    pass

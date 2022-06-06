@@ -46,22 +46,12 @@
 <p><a class="reference internal" href="#graphics.draw_lives" title="graphics.draw_lives"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw_lives()</span></code></a></p>
 <p><a class="reference internal" href="#graphics.draw_bg" title="graphics.draw_bg"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw_bg()</span></code></a></p>
 <p>CONSTANTS</p>
-<p><a class="reference internal" href="#graphics.WIDTH" title="graphics.WIDTH"><code class="xref py py-data docutils literal notranslate"><span class="pre">WIDTH</span></code></a></p>
-<p><a class="reference internal" href="#graphics.HEIGHT" title="graphics.HEIGHT"><code class="xref py py-data docutils literal notranslate"><span class="pre">HEIGHT</span></code></a></p>
+<p><a class="reference internal" href="#graphics.SCREEN_SIZE" title="graphics.SCREEN_SIZE"><code class="xref py py-data docutils literal notranslate"><span class="pre">SCREEN_SIZE</span></code></a></p>
 <p><a class="reference internal" href="space_shooter.html#space_shooter.FPS" title="space_shooter.FPS"><code class="xref py py-data docutils literal notranslate"><span class="pre">FPS</span></code></a></p>
 <p><a class="reference internal" href="#graphics.IMG_DIR" title="graphics.IMG_DIR"><code class="xref py py-data docutils literal notranslate"><span class="pre">IMG_DIR</span></code></a></p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<dl class="py data">
-<dt class="sig sig-object py" id="graphics.HEIGHT">
-<span class="sig-prename descclassname"><span class="pre">graphics.</span></span><span class="sig-name descname"><span class="pre">HEIGHT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">600</span></em><a class="headerlink" href="#graphics.HEIGHT" title="Permalink to this definition">¶</a></dt>
-<dd><p>The screen height in pixels.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-</dd></dl>
-
 <dl class="py data">
 <dt class="sig sig-object py" id="graphics.IMG_DIR">
 <span class="sig-prename descclassname"><span class="pre">graphics.</span></span><span class="sig-name descname"><span class="pre">IMG_DIR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/home/mint/projects/space_shooter/space_shooter/img'</span></em><a class="headerlink" href="#graphics.IMG_DIR" title="Permalink to this definition">¶</a></dt>
@@ -72,9 +62,9 @@
 </dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="graphics.WIDTH">
-<span class="sig-prename descclassname"><span class="pre">graphics.</span></span><span class="sig-name descname"><span class="pre">WIDTH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">400</span></em><a class="headerlink" href="#graphics.WIDTH" title="Permalink to this definition">¶</a></dt>
-<dd><p>The screen width in pixels.</p>
+<dt class="sig sig-object py" id="graphics.SCREEN_SIZE">
+<span class="sig-prename descclassname"><span class="pre">graphics.</span></span><span class="sig-name descname"><span class="pre">SCREEN_SIZE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(400,</span> <span class="pre">600)</span></em><a class="headerlink" href="#graphics.SCREEN_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd><p>The screen size in px (WIDTH, HEIGHT)</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -150,6 +140,24 @@
 <dd class="field-even"><p>text: int</p>
 </dd>
 </dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="graphics.draw_start_screen">
+<span class="sig-prename descclassname"><span class="pre">graphics.</span></span><span class="sig-name descname"><span class="pre">draw_start_screen</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphics.draw_start_screen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rendering the start screen.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="graphics.draw_text">
+<span class="sig-prename descclassname"><span class="pre">graphics.</span></span><span class="sig-name descname"><span class="pre">draw_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.draw_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writing text on the screen.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>

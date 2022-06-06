@@ -22,7 +22,10 @@ import instances
 import collision
 
 FPS = 60
-"""The frame rate."""
+"""The frame rate.
+
+|
+"""
 
 # Init the pygame and sounds.
 pygame.init()

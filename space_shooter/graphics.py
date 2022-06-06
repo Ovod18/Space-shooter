@@ -31,20 +31,32 @@ import pygame
 import colors
 
 WIDTH = 400
-"""The screen width in pixels."""
+"""The screen width in pixels.
+
+|
+"""
 
 HEIGHT = 600
-"""The screen height in pixels."""
+"""The screen height in pixels.
+
+|
+"""
 
 IMG_DIR = path.join(path.dirname(__file__), 'img')
-"""The directory for loading images."""
+"""The directory for loading images.
+
+|
+"""
 
 # Create the main window.
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Space_shooter")
 
 bg_img = pygame.image.load(path.join(IMG_DIR, "background.png")).convert()
-"""Background image."""
+"""Background image.
+
+|
+"""
 
 def draw_bg():
     """Rendering background.

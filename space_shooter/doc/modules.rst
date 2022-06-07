@@ -6,6 +6,5 @@ space_shooter
 
    collision
    graphics
-   instances
    personage
    space_shooter

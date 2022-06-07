@@ -19,6 +19,22 @@ import graphics
 import random
 from os import path
 
+all_sprites = pygame.sprite.Group()
+"""The group of all sprites.
+
+|
+"""
+mobs = pygame.sprite.Group()
+"""The group of mobs.
+
+|
+"""
+bullets = pygame.sprite.Group()
+"""The group of all bullets.
+
+|
+"""
+
 class Player(pygame.sprite.Sprite):
     """This class defines the player.
 
@@ -140,7 +156,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.center = (graphics.screen.get_width() / 2,
                             graphics.screen.get_height() + 200)
 
-    def shoot(self, *args):
+    def shoot(self):
         """This method defines player shooting.
 
         :param: object args: Groups of sprites, where a bullet will be added.
@@ -150,7 +166,7 @@ class Player(pygame.sprite.Sprite):
         now = pygame.time.get_ticks()
         if now - self.last_shot > self.shoot_delay:
             self.last_shot = now
-            bullet = Bullet(self.rect.centerx, self.rect.top, args)
+            bullet = Bullet(self.rect.centerx, self.rect.top)
 
 class Mob(pygame.sprite.Sprite):
     """This class defines a mob.
@@ -278,18 +294,16 @@ class Bullet(pygame.sprite.Sprite):
     |
     """
 
-    def __init__(self, x, y, *args):
+    def __init__(self, *pos):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(path.join(graphics.IMG_DIR,
                                                  "bullet.png")).convert()
         self.image.set_colorkey(graphics.colors["BLACK"])
         self.rect = self.image.get_rect()
-        self.rect.bottom = y
-        self.rect.centerx = x
+        self.rect.centerx, self.rect.bottom = pos
         self.speed_y = -10
         # Adding a bullet to groups (in args).
-        for group in args:
-            self.add(group)
+        self.add(all_sprites, bullets)
 
     def update(self, screen):
         """This method defines bullet updating.
@@ -300,3 +314,17 @@ class Bullet(pygame.sprite.Sprite):
         # Kill a bullet, if it goes upper the screen top.
         if self.rect.bottom < 0:
             self.kill()
+
+def new_mob():
+    """Generating new instance of class Mob in personage module.
+
+    |
+    """
+    # Mobs generation.
+    m = Mob(graphics.screen)
+    all_sprites.add(m)
+    # Adding mob to the group.
+    mobs.add(m)
+
+player = Player(graphics.screen)
+all_sprites.add(player)

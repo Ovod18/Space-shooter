@@ -18,7 +18,7 @@ from os import path
 import pygame
 import random
 import graphics
-import instances
+import personage
 import collision
 
 FPS = 60
@@ -47,7 +47,7 @@ def main():
 
     # The first mobs generation.
     for i in range(mobs_count := 9):
-        instances.new_mob()
+        personage.new_mob()
 
     # Create the game cycle.
     running = True
@@ -62,29 +62,29 @@ def main():
         # Player shooting (if K_SPACE is pressed).
         keystate = pygame.key.get_pressed()
         if keystate[pygame.K_SPACE]:
-           instances.player.shoot(instances.all_sprites, instances.bullets)
+           personage.player.shoot()
 
-        instances.all_sprites.update(graphics.screen)
+        personage.all_sprites.update(graphics.screen)
 
         # Check collision with bullets and mobs.
-        count = collision.mobs_bullets_collide(instances.mobs,
-                                               instances.bullets)
+        count = collision.mobs_bullets_collide(personage.mobs,
+                                               personage.bullets)
         for i in range(count):
-            instances.new_mob()
+            personage.new_mob()
             score += 1
 
         # Check collision with player and mobs.
-        collision.player_mobs_collide(instances.player, instances.mobs)
+        collision.player_mobs_collide(personage.player, personage.mobs)
         # Game over.
-        if instances.player.lives == 0:
+        if personage.player.lives == 0:
             running = False
 
         # Rendering.
         graphics.draw_bg()
-        instances.all_sprites.draw(graphics.screen)
+        personage.all_sprites.draw(graphics.screen)
         graphics.draw_score(score)
-        graphics.draw_health_bar(instances.player.health)
-        graphics.draw_lives(instances.player.lives, instances.player.mini_img)
+        graphics.draw_health_bar(personage.player.health)
+        graphics.draw_lives(personage.player.lives, personage.player.mini_img)
         pygame.display.flip()
 
     pygame.quit()

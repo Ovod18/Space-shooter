@@ -13,7 +13,7 @@ FUNCTIONS
 """
 
 import pygame
-import instances
+import personage
 
 def mobs_bullets_collide(mobs, bullets):
     """This function defines mobs and bullets collision.
@@ -37,13 +37,13 @@ def player_mobs_collide(player, mobs):
 
     |
     """
-    hits = pygame.sprite.spritecollide(instances.player, instances.mobs,
+    hits = pygame.sprite.spritecollide(personage.player, personage.mobs,
                                        True, pygame.sprite.collide_circle)
     for hit in hits:
-        instances.player.health -= 10
-        instances.new_mob()
+        personage.player.health -= 10
+        personage.new_mob()
         # Decrease player lives by 1.
-        if instances.player.health  <= 0:
-            instances.player.hide()
-            instances.player.lives -= 1
-            instances.player.health = 100
+        if personage.player.health  <= 0:
+            personage.player.hide()
+            personage.player.lives -= 1
+            personage.player.health = 100

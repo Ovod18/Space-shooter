@@ -41,7 +41,7 @@ def player_mobs_collide(player, mobs):
                                        True, pygame.sprite.collide_circle)
     for hit in hits:
         personage.player.health -= 10
-        personage.new_mob()
+        personage.new_mob(1)
         # Decrease player lives by 1.
         if personage.player.health  <= 0:
             personage.player.hide()

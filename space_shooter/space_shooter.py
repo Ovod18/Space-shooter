@@ -46,8 +46,7 @@ def main():
     score = 0
 
     # The first mobs generation.
-    for i in range(mobs_count := 9):
-        personage.new_mob()
+    personage.new_mob(mobs_count := 9)
 
     # Create the game cycle.
     running = True
@@ -69,8 +68,8 @@ def main():
         # Check collision with bullets and mobs.
         count = collision.mobs_bullets_collide(personage.mobs,
                                                personage.bullets)
+        personage.new_mob(count)
         for i in range(count):
-            personage.new_mob()
             score += 1
 
         # Check collision with player and mobs.

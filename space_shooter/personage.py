@@ -117,6 +117,7 @@ class Player(pygame.sprite.Sprite):
         # Autoshooting.
         self.shoot_delay = 250
         self.last_shot = self.hide_timer
+        self.add(all_sprites)
 
     def update(self, screen):
         """This method defines player updating.
@@ -315,16 +316,14 @@ class Bullet(pygame.sprite.Sprite):
         if self.rect.bottom < 0:
             self.kill()
 
-def new_mob():
+def new_mob(count):
     """Generating new instance of class Mob in personage module.
 
     |
     """
     # Mobs generation.
-    m = Mob(graphics.screen)
-    all_sprites.add(m)
-    # Adding mob to the group.
-    mobs.add(m)
+    for i in range(count):
+        mob = Mob(graphics.screen)
+        mob.add(all_sprites, mobs)
 
 player = Player(graphics.screen)
-all_sprites.add(player)

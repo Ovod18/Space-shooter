@@ -21,12 +21,13 @@ CONSTANTS
 
 :py:data:`.IMG_DIR`
 
+:py:data:`.colors`
+
 |
 """
 
 from os import path
 import pygame
-import colors
 
 SCREEN_SIZE = (WIDTH := 400, HEIGHT := 600)
 """The screen size in px (WIDTH, HEIGHT)
@@ -36,6 +37,13 @@ SCREEN_SIZE = (WIDTH := 400, HEIGHT := 600)
 
 IMG_DIR = path.join(path.dirname(__file__), 'img')
 """The directory for loading images.
+
+|
+"""
+
+colors = {"WHITE": (255, 255, 255), "BLACK": (0, 0, 0), "RED": (255, 0, 0),
+          "GREEN": (0, 255, 0), "BLUE": (0, 0, 255), "YELLOW": (255, 255, 0)}
+"""The dictionary of RGB colors.
 
 |
 """
@@ -78,7 +86,7 @@ def draw_score(score):
 
     |
     """
-    draw_text(str(score), (pos := (WIDTH/2), 10), size := 18, colors.RED)
+    draw_text(str(score), (pos := (WIDTH/2), 10), size := 18, colors["RED"])
 
 def draw_health_bar(percent):
     """Rendering player health on the surface.
@@ -94,15 +102,15 @@ def draw_health_bar(percent):
     bar_size = (bar_length := 100, bar_height := 10)
     fill = (percent / 100) * bar_length
     if fill <= 30:
-        color = colors.RED
+        color = colors["RED"]
     else:
-        color = colors.GREEN
+        color = colors["GREEN"]
     border_rect = pygame.Rect(*pos, *bar_size)
     fill_rect = pygame.Rect(*pos, fill, bar_height)
     # Draw an internal rect.
     pygame.draw.rect(screen, color, fill_rect)
     # Draw a border.
-    pygame.draw.rect(screen, colors.WHITE, border_rect, 2)
+    pygame.draw.rect(screen, colors["WHITE"], border_rect, 2)
 
 def draw_lives(lives, icon):
     """Rendering player lives on the surface.

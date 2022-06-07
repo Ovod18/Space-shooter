@@ -19,7 +19,7 @@ CONSTANTS
 """
 
 import pygame
-import colors
+import graphics
 import random
 from os import path
 
@@ -88,12 +88,12 @@ class Player(pygame.sprite.Sprite):
         # Loading player image.
         self.image = pygame.image.load(path.join(IMG_DIR,
                                                  "rocket.png")).convert()
-        self.image.set_colorkey(colors.BLACK)
+        self.image.set_colorkey(graphics.colors["BLACK"])
         # Loading player mini image.
         self.mini_img = pygame.transform.scale(self.image, (25, 19))
-        self.mini_img.set_colorkey(colors.BLACK)
+        self.mini_img.set_colorkey(graphics.colors["BLACK"])
         # Check and draw collision area.
-        #pygame.draw.circle(self.image, colors.RED,
+        #pygame.draw.circle(self.image, graphics.colors["BLACK"],
         #                   self.rect.center, self.radius)
         # Screen area.
         screen_size = screen.get_size()
@@ -211,12 +211,12 @@ class Mob(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image_orig = pygame.image.load(path.join(IMG_DIR,
                                             "kal.png")).convert()
-        self.image_orig.set_colorkey(colors.BLACK)
+        self.image_orig.set_colorkey(graphics.colors["BLACK"])
         self.image = self.image_orig.copy()
         self.rect = self.image.get_rect()
         self.radius = self.rect.width / 2
         # Check collision area.
-        #pygame.draw.circle(self.image, colors.RED,
+        #pygame.draw.circle(self.image, graphics.colors["RED"],
         #                   self.rect.center, self.radius)
         screen_size = screen.get_size()
         screen_w = screen_size[0]
@@ -295,7 +295,7 @@ class Bullet(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(path.join(IMG_DIR,
                                                  "bullet.png")).convert()
-        self.image.set_colorkey(colors.BLACK)
+        self.image.set_colorkey(graphics.colors["BLACK"])
         self.rect = self.image.get_rect()
         self.rect.bottom = y
         self.rect.centerx = x

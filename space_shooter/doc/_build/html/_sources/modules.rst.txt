@@ -5,7 +5,6 @@ space_shooter
    :maxdepth: 4
 
    collision
-   colors
    graphics
    instances
    personage

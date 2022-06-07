@@ -1,4 +1,4 @@
-"""This module contains instances and its groups 
+"""This module contains instances and its groups
 of classes in personage module.
 
 :platform: Linux

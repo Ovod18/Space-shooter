@@ -17,8 +17,6 @@ CONSTANTS
 
 :py:data:`.SCREEN_SIZE`
 
-:py:data:`.FPS`
-
 :py:data:`.IMG_DIR`
 
 :py:data:`.colors`
@@ -131,12 +129,9 @@ def draw_start_screen():
 
     |
     """
-    """
-    screen.blit(bg_img, bg_rect)
-    draw_text(screen, "space shooter", 64, WIDTH / 2, HEIGHT / 4)
-    draw_text(screen, "Arrow keys move, Space to fire", 22,
-              WIDTH / 2, HEIGHT / 2)
-    draw_text(screen, "Press a key to begin", 18,
-              WIDTH / 2, HEIGHT * 3 / 4)
-    """
-    pass
+    screen.blit(bg_img, bg_img.get_rect())
+    draw_text("space shooter", (WIDTH / 2, HEIGHT / 4), 64, colors["RED"])
+    draw_text("Arrow keys move, Space to fire", (WIDTH / 2, HEIGHT / 2),
+              24, colors["RED"])
+    draw_text("Press a key to begin", (WIDTH / 2, HEIGHT * 3 / 4),
+              18, colors["RED"])

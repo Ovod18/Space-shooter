@@ -54,7 +54,7 @@ class Player(pygame.sprite.Sprite):
     .. py:attribute:: image
         The player image.
         :type: object
-    .. py:attribute:: mini_image
+    .. py:attribute:: icon
         The player icon.
         :type: object
     .. py:attribute:: rect
@@ -81,7 +81,7 @@ class Player(pygame.sprite.Sprite):
         :value: 3
     .. py:attribute:: hidden
         The flag of player hiding.
-        :type: boolean
+        :type: bool
         :value: False
     .. py:attribute:: hide_timer
         Time of last player hiding.
@@ -96,9 +96,9 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.image.load(path.join(graphics.IMG_DIR,
                                                  "rocket.png")).convert()
         self.image.set_colorkey(graphics.colors["BLACK"])
-        # Loading player mini image.
-        self.mini_img = pygame.transform.scale(self.image, (25, 19))
-        self.mini_img.set_colorkey(graphics.colors["BLACK"])
+        # Loading player icon.
+        self.icon = pygame.transform.scale(self.image, (20, 25))
+        self.icon.set_colorkey(graphics.colors["BLACK"])
         # Check and draw collision area.
         #pygame.draw.circle(self.image, graphics.colors["BLACK"],
         #                   self.rect.center, self.radius)

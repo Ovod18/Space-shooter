@@ -46,10 +46,11 @@ def main():
     score = 0
 
     # The first mobs generation.
-    personage.new_mob(mobs_count := 9)
+    personage.new_mob(mobs_count := 30)
 
     # Create the game cycle.
     running = True
+    game_over = False
     while running:
         clock.tick(FPS)
         # Check events.
@@ -76,14 +77,27 @@ def main():
         collision.player_mobs_collide(personage.player, personage.mobs)
         # Game over.
         if personage.player.lives == 0:
-            running = False
-
+            #running = False
+            game_over = True
+            if game_over:
+                graphics.draw_start_screen()
+                pygame.display.flip()
+                waiting = True
+                while waiting:
+                    clock.tick(FPS)
+                    for event in pygame.event.get():
+                        if event.type == pygame.QUIT:
+                            waiting = False
+                            running = False
+                        if event.type == pygame.KEYUP:
+                            waiting = False
+                            game_over = False
         # Rendering.
         graphics.draw_bg()
         personage.all_sprites.draw(graphics.screen)
         graphics.draw_score(score)
         graphics.draw_health_bar(personage.player.health)
-        graphics.draw_lives(personage.player.lives, personage.player.mini_img)
+        graphics.draw_lives(personage.player.lives, personage.player.icon)
         pygame.display.flip()
 
     pygame.quit()

@@ -11,10 +11,6 @@ CLASSES
 
 :py:class:`.Bullet`
 
-CONSTANTS
-
-:py:data:`.IMG_DIR`
-
 |
 """
 
@@ -22,9 +18,6 @@ import pygame
 import graphics
 import random
 from os import path
-
-IMG_DIR = path.join(path.dirname(__file__), 'img')
-"""The directory for loading images."""
 
 class Player(pygame.sprite.Sprite):
     """This class defines the player.
@@ -80,13 +73,11 @@ class Player(pygame.sprite.Sprite):
 
     |
     """
-    screen_w = 0
-    screen_h = 0
 
     def __init__(self, screen):
         pygame.sprite.Sprite.__init__(self)
         # Loading player image.
-        self.image = pygame.image.load(path.join(IMG_DIR,
+        self.image = pygame.image.load(path.join(graphics.IMG_DIR,
                                                  "rocket.png")).convert()
         self.image.set_colorkey(graphics.colors["BLACK"])
         # Loading player mini image.
@@ -95,15 +86,11 @@ class Player(pygame.sprite.Sprite):
         # Check and draw collision area.
         #pygame.draw.circle(self.image, graphics.colors["BLACK"],
         #                   self.rect.center, self.radius)
-        # Screen area.
-        screen_size = screen.get_size()
         # Player rect.
         self.rect = self.image.get_rect()
         self.radius = self.rect.width / 2
-        Player.screen_w = screen.get_width()
-        Player.screen_h = screen.get_height()
-        self.rect.centerx = Player.screen_w / 2
-        self.rect.bottom = Player.screen_h - 10
+        self.rect.centerx = graphics.screen.get_width() / 2
+        self.rect.bottom = graphics.screen.get_height() - 10
         self.speed_x = 0
         # Player health.
         self.health = 100
@@ -113,7 +100,7 @@ class Player(pygame.sprite.Sprite):
         self.hide_timer = pygame.time.get_ticks()
         # Autoshooting.
         self.shoot_delay = 250
-        self.last_shot = pygame.time.get_ticks()
+        self.last_shot = self.hide_timer
 
     def update(self, screen):
         """This method defines player updating.
@@ -125,8 +112,8 @@ class Player(pygame.sprite.Sprite):
         # Show the player in start point, if it is hidden. 
         if self.hidden and pygame.time.get_ticks() - self.hide_timer > 1000:
             self.hidden = False
-            self.rect.centerx = Player.screen_w / 2
-            self.rect.bottom = Player.screen_h - 10
+            self.rect.centerx = graphics.screen.get_width() / 2
+            self.rect.bottom = graphics.screen.get_height() - 10
 
         screen_size = screen.get_size()
         self.speed_x = 0
@@ -136,8 +123,8 @@ class Player(pygame.sprite.Sprite):
         if keystate[pygame.K_LEFT]:
             self.speed_x = -6
         self.rect.x += self.speed_x
-        if self.rect.right > Player.screen_w:
-            self.rect.right = Player.screen_w
+        if self.rect.right > graphics.screen.get_width():
+            self.rect.right = graphics.screen.get_width()
         if self.rect.left < 0:
             self.rect.left = 0
         #if keystate[pygame.K_SPACE]:
@@ -150,7 +137,8 @@ class Player(pygame.sprite.Sprite):
         """
         self.hidden = True
         self.hide_timer = pygame.time.get_ticks()
-        self.rect.center = (Player.screen_w / 2, Player.screen_h + 200)
+        self.rect.center = (graphics.screen.get_width() / 2,
+                            graphics.screen.get_height() + 200)
 
     def shoot(self, *args):
         """This method defines player shooting.
@@ -209,7 +197,7 @@ class Mob(pygame.sprite.Sprite):
 
     def __init__(self, screen):
         pygame.sprite.Sprite.__init__(self)
-        self.image_orig = pygame.image.load(path.join(IMG_DIR,
+        self.image_orig = pygame.image.load(path.join(graphics.IMG_DIR,
                                             "kal.png")).convert()
         self.image_orig.set_colorkey(graphics.colors["BLACK"])
         self.image = self.image_orig.copy()
@@ -219,8 +207,8 @@ class Mob(pygame.sprite.Sprite):
         #pygame.draw.circle(self.image, graphics.colors["RED"],
         #                   self.rect.center, self.radius)
         screen_size = screen.get_size()
-        screen_w = screen_size[0]
-        self.rect.x = random.randrange(screen_w - self.rect.width)
+        self.rect.x = random.randrange(graphics.screen.get_width()
+                                       - self.rect.width)
         self.rect.y = random.randrange(-100, -40)
         self.speedx = random.randrange(-2, 2)
         self.speedy = random.randrange(1, 5)
@@ -236,18 +224,17 @@ class Mob(pygame.sprite.Sprite):
         |
         """
         screen_size = screen.get_size()
-        screen_w = screen_size[0]
-        screen_h = screen_size[1]
         # Movement.
         self.rect.x += self.speedx
         self.rect.y += self.speedy
         # Rotation.
         self.rotate()
         # Reloading when reaching the screen bottom.
-        if ((self.rect.top > screen_h + 10) or
+        if ((self.rect.top > graphics.screen.get_height() + 10) or
             (self.rect.left < -25) or
-            (self.rect.right > screen_w + 20)):
-            self.rect.x = random.randrange(screen_w - self.rect.width)
+            (self.rect.right > graphics.screen.get_width() + 20)):
+            self.rect.x = random.randrange(graphics.screen.get_width()
+                                           - self.rect.width)
             self.rect.y = random.randrange(-100, -40)
             self.speedy = random.randrange(1, 3)
             self.speedx = random.randrange(-2, 2)
@@ -293,7 +280,7 @@ class Bullet(pygame.sprite.Sprite):
 
     def __init__(self, x, y, *args):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load(path.join(IMG_DIR,
+        self.image = pygame.image.load(path.join(graphics.IMG_DIR,
                                                  "bullet.png")).convert()
         self.image.set_colorkey(graphics.colors["BLACK"])
         self.rect = self.image.get_rect()

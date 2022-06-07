@@ -49,7 +49,7 @@ colors = {"WHITE": (255, 255, 255), "BLACK": (0, 0, 0), "RED": (255, 0, 0),
 """
 
 # Create the main window.
-screen = pygame.display.set_mode((SCREEN_SIZE))
+screen = pygame.display.set_mode(SCREEN_SIZE)
 pygame.display.set_caption("Space_shooter")
 
 bg_img = pygame.image.load(path.join(IMG_DIR, "background.png")).convert()

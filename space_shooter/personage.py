@@ -11,6 +11,10 @@ CLASSES
 
 :py:class:`.Bullet`
 
+FUNCTIONS
+
+:py:func:`.new_mob`
+
 |
 """
 
@@ -232,6 +236,7 @@ class Mob(pygame.sprite.Sprite):
         self.rot = 0
         self.rot_speed = random.randrange(-8, 8)
         self.last_update = pygame.time.get_ticks()
+        self.add(all_sprites, mobs)
 
     def update(self, screen):
         """This method defines mob updating.
@@ -319,11 +324,11 @@ class Bullet(pygame.sprite.Sprite):
 def new_mob(count):
     """Generating new instance of class Mob in personage module.
 
+    :param: count:Count to mobs generation.
+
     |
     """
-    # Mobs generation.
     for i in range(count):
         mob = Mob(graphics.screen)
-        mob.add(all_sprites, mobs)
 
 player = Player(graphics.screen)

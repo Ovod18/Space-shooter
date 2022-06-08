@@ -14,12 +14,11 @@ CONSTANTS
 |
 """
 
-from os import path
 import pygame
-import random
 import graphics
 import personage
 import collision
+import session
 
 FPS = 60
 """The frame rate.
@@ -34,7 +33,7 @@ pygame.mixer.init()
 clock = pygame.time.Clock()
 
 def main():
-    """The main function in space_shooter
+    """The main function in space_shooter.
 
     |
     """
@@ -43,14 +42,15 @@ def main():
     graphics.draw_bg()
     pygame.display.flip()
 
-    score = 0
+    session.init()
 
     # The first mobs generation.
-    personage.new_mob(mobs_count := 30)
+    #personage.new_mob(mobs_count := 30)
 
     # Create the game cycle.
     running = True
     game_over = False
+    graphics.draw_start_screen()
     while running:
         clock.tick(FPS)
         # Check events.
@@ -67,12 +67,8 @@ def main():
         personage.all_sprites.update(graphics.screen)
 
         # Check collision with bullets and mobs.
-        count = collision.mobs_bullets_collide(personage.mobs,
+        collision.mobs_bullets_collide(personage.mobs,
                                                personage.bullets)
-        personage.new_mob(count)
-        for i in range(count):
-            score += 1
-
         # Check collision with player and mobs.
         collision.player_mobs_collide(personage.player, personage.mobs)
         # Game over.
@@ -92,10 +88,11 @@ def main():
                         if event.type == pygame.KEYUP:
                             waiting = False
                             game_over = False
+                            session.init()
         # Rendering.
         graphics.draw_bg()
         personage.all_sprites.draw(graphics.screen)
-        graphics.draw_score(score)
+        graphics.draw_score(session.score1)
         graphics.draw_health_bar(personage.player.health)
         graphics.draw_lives(personage.player.lives, personage.player.icon)
         pygame.display.flip()

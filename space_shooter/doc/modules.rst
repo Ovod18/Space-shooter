@@ -7,4 +7,5 @@ space_shooter
    collision
    graphics
    personage
+   session
    space_shooter

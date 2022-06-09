@@ -48,9 +48,23 @@ def main():
     #personage.new_mob(mobs_count := 30)
 
     # Create the game cycle.
-    running = True
+    running = False
     game_over = False
     graphics.draw_start_screen()
+    pygame.display.flip()
+    waiting = True
+    while waiting:
+        clock.tick(FPS)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                waiting = False
+                running = False
+            if event.type == pygame.KEYUP:
+                waiting = False
+                game_over = False
+                running = True
+                session.init()
+
     while running:
         clock.tick(FPS)
         # Check events.

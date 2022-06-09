@@ -44,28 +44,11 @@ def main():
 
     session.init()
 
-    # The first mobs generation.
-    #personage.new_mob(mobs_count := 30)
-
     # Create the game cycle.
-    #status.running = False
-    #status.game_over = False
-    #status.waiting = True
     graphics.draw_start_screen()
     pygame.display.flip()
     session.status.waiting = True
-    while session.status.waiting:
-        clock.tick(FPS)
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                session.status.waiting = False
-                session.status.running = False
-            if event.type == pygame.KEYUP:
-                session.status.waiting = False
-                session.status.game_over = False
-                session.status.running = True
-                session.init()
-
+    session.wait()
     while session.status.running:
         clock.tick(FPS)
         # Check events.
@@ -89,17 +72,8 @@ def main():
                 graphics.draw_start_screen()
                 pygame.display.flip()
                 session.status.waiting = True
-                while session.status.waiting:
-                    clock.tick(FPS)
-                    for event in pygame.event.get():
-                        if event.type == pygame.QUIT:
-                            session.status.waiting = False
-                            session.status.running = False
-                        if event.type == pygame.KEYUP:
-                            session.status.waiting = False
-                            session.status.game_over = False
-                            session.status.running = True
-                            session.init()
+                session.wait()
+
         # Rendering.
         graphics.draw_bg()
         personage.all_sprites.draw(graphics.screen)

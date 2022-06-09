@@ -36,22 +36,21 @@ def init():
         mob.kill()
     personage.new_mob(40)
 
-'''
+
 def wait():
     """Waiting for plaer choice.
 
     |
     """
-    waiting = True
-    while waiting:
+    while status.waiting:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                waiting = False
-                running = False
+                status.waiting = False
+                status.running = False
             if event.type == pygame.KEYUP:
-                waiting = False
-                game_over = False
-                running = True
+                status.waiting = False
+                status.game_over = False
+                status.running = True
                 init()
-'''
+
 status = Status()

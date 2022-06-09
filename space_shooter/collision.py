@@ -9,6 +9,8 @@ FUNCTIONS
 
 :py:func:`.player_mobs_collide`
 
+:py:func:`.check_collision_all`
+
 |
 """
 
@@ -50,3 +52,11 @@ def player_mobs_collide(player, mobs):
             personage.player.hide()
             personage.player.lives -= 1
             personage.player.health = 100
+
+def check_collision_all():
+    """Checking collision between all sprites and groups.
+
+    |
+    """
+    mobs_bullets_collide(personage.mobs, personage.bullets)
+    player_mobs_collide(personage.player, personage.mobs)

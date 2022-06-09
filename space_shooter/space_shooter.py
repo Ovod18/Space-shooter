@@ -43,9 +43,9 @@ def main():
     pygame.display.flip()
 
     session.init()
+    session.wait()
 
     # Create the game cycle.
-    session.wait()
     while session.status.running:
         clock.tick(FPS)
         # Check events.
@@ -55,12 +55,7 @@ def main():
                 session.status.running = False
 
         personage.all_sprites.update(graphics.screen)
-
-        # Check collision with bullets and mobs.
-        collision.mobs_bullets_collide(personage.mobs,
-                                               personage.bullets)
-        # Check collision with player and mobs.
-        collision.player_mobs_collide(personage.player, personage.mobs)
+        collision.check_collision_all()
         # Game over.
         if personage.player.lives == 0:
             #status.running = False

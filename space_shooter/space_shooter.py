@@ -38,16 +38,13 @@ def main():
     |
     """
 
-    # Rendering background.
+    # Primary rendering background.
     graphics.draw_bg()
     pygame.display.flip()
 
     session.init()
 
     # Create the game cycle.
-    graphics.draw_start_screen()
-    pygame.display.flip()
-    session.status.waiting = True
     session.wait()
     while session.status.running:
         clock.tick(FPS)
@@ -69,9 +66,6 @@ def main():
             #status.running = False
             session.status.game_over = True
             if session.status.game_over:
-                graphics.draw_start_screen()
-                pygame.display.flip()
-                session.status.waiting = True
                 session.wait()
 
         # Rendering.

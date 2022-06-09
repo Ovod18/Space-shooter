@@ -1,14 +1,21 @@
 """This module defines the game session.
 
+CLASSES
+
+:py:class:`.Status`
+
 FUNCTIONS
 
 :py:func:`.init`
+
+:py:func:`.wait`
 
 |
 """
 
 import personage
 import pygame
+import graphics
 
 waiting = True
 running = False
@@ -16,7 +23,22 @@ game_over = False
 
 
 class Status():
-    """Status information of current game session"""
+    """Status information of current game session.
+
+     ATTRIBUTES
+
+    .. py:attribute:: waiting
+        The game current session status.
+        :type: bool
+    .. py:attribute:: running
+        The game current session status.
+        :type: bool
+    .. py:attribute:: game_over
+        The game current session status.
+        :type: bool
+
+    |
+    """
 
     def __init__(self):
         self.waiting = True
@@ -38,10 +60,13 @@ def init():
 
 
 def wait():
-    """Waiting for plaer choice.
+    """Waiting for player choice.
 
     |
     """
+    graphics.draw_start_screen()
+    pygame.display.flip()
+    status.waiting = True
     while status.waiting:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

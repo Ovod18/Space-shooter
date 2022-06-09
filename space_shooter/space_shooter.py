@@ -48,35 +48,31 @@ def main():
     #personage.new_mob(mobs_count := 30)
 
     # Create the game cycle.
-    running = False
-    game_over = False
+    #running = False
+    #game_over = False
+    #waiting = True
     graphics.draw_start_screen()
     pygame.display.flip()
-    waiting = True
-    while waiting:
+    session.waiting = True
+    while session.waiting:
         clock.tick(FPS)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                waiting = False
-                running = False
+                session.waiting = False
+                session.running = False
             if event.type == pygame.KEYUP:
-                waiting = False
-                game_over = False
-                running = True
+                session.waiting = False
+                session.game_over = False
+                session.running = True
                 session.init()
 
-    while running:
+    while session.running:
         clock.tick(FPS)
         # Check events.
         for event in pygame.event.get():
             # Check closing main window event.
             if event.type == pygame.QUIT:
-                running = False
-
-        # Player shooting (if K_SPACE is pressed).
-        keystate = pygame.key.get_pressed()
-        if keystate[pygame.K_SPACE]:
-           personage.player.shoot()
+                session.running = False
 
         personage.all_sprites.update(graphics.screen)
 
@@ -88,20 +84,21 @@ def main():
         # Game over.
         if personage.player.lives == 0:
             #running = False
-            game_over = True
-            if game_over:
+            session.game_over = True
+            if session.game_over:
                 graphics.draw_start_screen()
                 pygame.display.flip()
-                waiting = True
-                while waiting:
+                session.waiting = True
+                while session.waiting:
                     clock.tick(FPS)
                     for event in pygame.event.get():
                         if event.type == pygame.QUIT:
-                            waiting = False
-                            running = False
+                            session.waiting = False
+                            session.running = False
                         if event.type == pygame.KEYUP:
-                            waiting = False
-                            game_over = False
+                            session.waiting = False
+                            session.game_over = False
+                            session.running = True
                             session.init()
         # Rendering.
         graphics.draw_bg()

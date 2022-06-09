@@ -8,6 +8,11 @@ FUNCTIONS
 """
 
 import personage
+import pygame
+
+waiting = True
+running = False
+game_over = False
 
 def init():
     """Reset all to start.
@@ -21,3 +26,22 @@ def init():
     for mob in personage.mobs:
         mob.kill()
     personage.new_mob(10)
+
+'''
+def wait():
+    """Waiting for plaer choice.
+
+    |
+    """
+    waiting = True
+    while waiting:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                waiting = False
+                running = False
+            if event.type == pygame.KEYUP:
+                waiting = False
+                game_over = False
+                running = True
+                init()
+'''

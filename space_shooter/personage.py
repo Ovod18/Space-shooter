@@ -148,8 +148,8 @@ class Player(pygame.sprite.Sprite):
             self.rect.right = graphics.screen.get_width()
         if self.rect.left < 0:
             self.rect.left = 0
-        #if keystate[pygame.K_SPACE]:
-        #    self.shoot()
+        if keystate[pygame.K_SPACE]:
+            self.shoot()
 
     def hide(self):
         """This method defines player hiding.

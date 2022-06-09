@@ -106,7 +106,7 @@ def main():
         # Rendering.
         graphics.draw_bg()
         personage.all_sprites.draw(graphics.screen)
-        graphics.draw_score(session.score1)
+        graphics.draw_score(session.score)
         graphics.draw_health_bar(personage.player.health)
         graphics.draw_lives(personage.player.lives, personage.player.icon)
         pygame.display.flip()

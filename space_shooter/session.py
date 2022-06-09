@@ -14,8 +14,8 @@ def init():
 
     |
     """
-    global score1
-    score1 = 0
+    global score
+    score = 0
     personage.player.health = 100
     personage.player.lives = 3
     for mob in personage.mobs:

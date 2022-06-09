@@ -29,7 +29,7 @@ def mobs_bullets_collide(mobs, bullets):
                                       True, True)
     for hit in hits:
         personage.new_mob(1)
-        session.score1 += 1
+        session.score += 1
 
 def player_mobs_collide(player, mobs):
     """This function defines player and mobs collision.

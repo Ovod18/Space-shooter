@@ -14,6 +14,15 @@ waiting = True
 running = False
 game_over = False
 
+
+class Status():
+    """Status information of current game session"""
+
+    def __init__(self):
+        self.waiting = True
+        self.running = False
+        self.game_over = False
+
 def init():
     """Reset all to start.
 
@@ -25,7 +34,7 @@ def init():
     personage.player.lives = 3
     for mob in personage.mobs:
         mob.kill()
-    personage.new_mob(10)
+    personage.new_mob(40)
 
 '''
 def wait():
@@ -45,3 +54,4 @@ def wait():
                 running = True
                 init()
 '''
+status = Status()

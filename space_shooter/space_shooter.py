@@ -48,31 +48,31 @@ def main():
     #personage.new_mob(mobs_count := 30)
 
     # Create the game cycle.
-    #running = False
-    #game_over = False
-    #waiting = True
+    #status.running = False
+    #status.game_over = False
+    #status.waiting = True
     graphics.draw_start_screen()
     pygame.display.flip()
-    session.waiting = True
-    while session.waiting:
+    session.status.waiting = True
+    while session.status.waiting:
         clock.tick(FPS)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                session.waiting = False
-                session.running = False
+                session.status.waiting = False
+                session.status.running = False
             if event.type == pygame.KEYUP:
-                session.waiting = False
-                session.game_over = False
-                session.running = True
+                session.status.waiting = False
+                session.status.game_over = False
+                session.status.running = True
                 session.init()
 
-    while session.running:
+    while session.status.running:
         clock.tick(FPS)
         # Check events.
         for event in pygame.event.get():
             # Check closing main window event.
             if event.type == pygame.QUIT:
-                session.running = False
+                session.status.running = False
 
         personage.all_sprites.update(graphics.screen)
 
@@ -83,22 +83,22 @@ def main():
         collision.player_mobs_collide(personage.player, personage.mobs)
         # Game over.
         if personage.player.lives == 0:
-            #running = False
-            session.game_over = True
-            if session.game_over:
+            #status.running = False
+            session.status.game_over = True
+            if session.status.game_over:
                 graphics.draw_start_screen()
                 pygame.display.flip()
-                session.waiting = True
-                while session.waiting:
+                session.status.waiting = True
+                while session.status.waiting:
                     clock.tick(FPS)
                     for event in pygame.event.get():
                         if event.type == pygame.QUIT:
-                            session.waiting = False
-                            session.running = False
+                            session.status.waiting = False
+                            session.status.running = False
                         if event.type == pygame.KEYUP:
-                            session.waiting = False
-                            session.game_over = False
-                            session.running = True
+                            session.status.waiting = False
+                            session.status.game_over = False
+                            session.status.running = True
                             session.init()
         # Rendering.
         graphics.draw_bg()

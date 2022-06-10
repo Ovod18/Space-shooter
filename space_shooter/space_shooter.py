@@ -37,31 +37,16 @@ def main():
 
     |
     """
-
-    # Primary rendering background.
-    #graphics.draw_bg()
-    #pygame.display.flip()
-
     session.init()
     session.wait()
 
     # Create the game cycle.
     while session.status.running:
         clock.tick(FPS)
-        # Check events.
-        for event in pygame.event.get():
-            # Check closing main window event.
-            if event.type == pygame.QUIT:
-                session.status.running = False
-
+        session.check_quit()
         personage.all_sprites.update(graphics.screen)
         collision.check_collision_all()
-        # Game over.
-        if personage.player.lives == 0:
-            session.status.game_over = True
-            if session.status.game_over:
-                session.wait()
-
+        session.check_game_over()
         # Rendering.
         graphics.draw_bg()
         personage.all_sprites.draw(graphics.screen)

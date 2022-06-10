@@ -10,6 +10,10 @@ FUNCTIONS
 
 :py:func:`.wait`
 
+:py:func:`.check_quit`
+
+:py:func:`.check_game_over`
+
 |
 """
 
@@ -77,5 +81,25 @@ def wait():
                 status.game_over = False
                 status.running = True
                 init()
+
+def check_quit():
+    """Check the quit event.
+
+    |
+    """
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            status.running = False
+
+def check_game_over():
+    """Check is the game over.
+
+    |
+    """
+    if personage.player.lives == 0:
+        status.game_over = True
+        if status.game_over:
+            wait()
+
 
 status = Status()

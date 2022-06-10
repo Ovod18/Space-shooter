@@ -145,7 +145,7 @@ def draw_start_screen():
     draw_text("space shooter", (WIDTH / 2, HEIGHT / 4), 64, colors["RED"])
     draw_text("Arrow keys move, Space to fire", (WIDTH / 2, HEIGHT / 2),
               24, colors["RED"])
-    draw_text("Press a key to begin", (WIDTH / 2, HEIGHT * 3 / 4),
+    draw_text("Press enter to begin", (WIDTH / 2, HEIGHT * 3 / 4),
               18, colors["RED"])
 
 def draw_player_info(player, score):

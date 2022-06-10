@@ -76,11 +76,12 @@ def wait():
             if event.type == pygame.QUIT:
                 status.waiting = False
                 status.running = False
-            if event.type == pygame.KEYUP:
-                status.waiting = False
-                status.game_over = False
-                status.running = True
-                init()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    status.waiting = False
+                    status.game_over = False
+                    status.running = True
+                    init()
 
 def check_quit():
     """Check the quit event.

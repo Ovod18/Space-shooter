@@ -13,6 +13,8 @@ FUNCTIONS
 
 :py:func:`.draw_bg`
 
+:py:func:`.draw_player_info`
+
 CONSTANTS
 
 :py:data:`.SCREEN_SIZE`
@@ -66,6 +68,16 @@ def draw_bg():
 
 def draw_text(text, pos, size, color):
     """Writing text on the screen.
+
+    :param: text: text for drowing on the screen
+    :type: text: str
+    :param: pos: position for text drowing
+    :type: text: tuple
+    :param: size: size of font
+    :type: text: int
+    :param: color: color of text
+    :type: text: str
+
 
     |
     """
@@ -135,3 +147,18 @@ def draw_start_screen():
               24, colors["RED"])
     draw_text("Press a key to begin", (WIDTH / 2, HEIGHT * 3 / 4),
               18, colors["RED"])
+
+def draw_player_info(player, score):
+    """Rendering player lives, health and score.
+
+    :param: player: personage.player
+    :type: text: object
+    :param: score: value for drowing
+    :type: text: int
+
+    |
+    """
+    draw_score(score)
+    draw_health_bar(player.health)
+    draw_lives(player.lives, player.icon)
+

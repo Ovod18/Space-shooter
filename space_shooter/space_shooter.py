@@ -39,8 +39,8 @@ def main():
     """
 
     # Primary rendering background.
-    graphics.draw_bg()
-    pygame.display.flip()
+    #graphics.draw_bg()
+    #pygame.display.flip()
 
     session.init()
     session.wait()
@@ -58,7 +58,6 @@ def main():
         collision.check_collision_all()
         # Game over.
         if personage.player.lives == 0:
-            #status.running = False
             session.status.game_over = True
             if session.status.game_over:
                 session.wait()
@@ -66,9 +65,7 @@ def main():
         # Rendering.
         graphics.draw_bg()
         personage.all_sprites.draw(graphics.screen)
-        graphics.draw_score(session.score)
-        graphics.draw_health_bar(personage.player.health)
-        graphics.draw_lives(personage.player.lives, personage.player.icon)
+        graphics.draw_player_info(personage.player, session.score)
         pygame.display.flip()
 
     pygame.quit()

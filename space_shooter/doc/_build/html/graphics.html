@@ -46,6 +46,7 @@
 <p><a class="reference internal" href="#graphics.draw_lives" title="graphics.draw_lives"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw_lives()</span></code></a></p>
 <p><a class="reference internal" href="#graphics.draw_bg" title="graphics.draw_bg"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw_bg()</span></code></a></p>
 <p><a class="reference internal" href="#graphics.draw_player_info" title="graphics.draw_player_info"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw_player_info()</span></code></a></p>
+<p><a class="reference internal" href="#graphics.load_img" title="graphics.load_img"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_img()</span></code></a></p>
 <p>CONSTANTS</p>
 <p><a class="reference internal" href="#graphics.SCREEN_SIZE" title="graphics.SCREEN_SIZE"><code class="xref py py-data docutils literal notranslate"><span class="pre">SCREEN_SIZE</span></code></a></p>
 <p><a class="reference internal" href="#graphics.IMG_DIR" title="graphics.IMG_DIR"><code class="xref py py-data docutils literal notranslate"><span class="pre">IMG_DIR</span></code></a></p>
@@ -129,9 +130,6 @@
 <dt class="field-odd">Param</dt>
 <dd class="field-odd"><p>icon: player icon</p>
 </dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>icon: object</p>
-</dd>
 </dl>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -146,14 +144,11 @@
 <dt class="field-odd">Param</dt>
 <dd class="field-odd"><p>player: personage.player</p>
 </dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>text: object</p>
+<dt class="field-even">Param</dt>
+<dd class="field-even"><p>score: value for drowing</p>
 </dd>
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>score: value for drowing</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>text: int</p>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>text: int</p>
 </dd>
 </dl>
 <div class="line-block">
@@ -215,6 +210,23 @@
 </dd>
 <dt class="field-even">Type</dt>
 <dd class="field-even"><p>text: str</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="graphics.load_img">
+<span class="sig-prename descclassname"><span class="pre">graphics.</span></span><span class="sig-name descname"><span class="pre">load_img</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.load_img" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function loads image from IMG_DIR</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>img_name: name of loaded image</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>image</p>
 </dd>
 </dl>
 <div class="line-block">

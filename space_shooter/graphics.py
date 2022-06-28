@@ -15,6 +15,8 @@ FUNCTIONS
 
 :py:func:`.draw_player_info`
 
+:py:func:`.load_img`
+
 CONSTANTS
 
 :py:data:`.SCREEN_SIZE`
@@ -58,6 +60,18 @@ bg_img = pygame.image.load(path.join(IMG_DIR, "background.png")).convert()
 |
 """
 
+def load_img(img_name):
+    """This function loads image from IMG_DIR
+
+    :param: img_name: name of loaded image
+    :return: image
+
+    |
+    """
+    image = pygame.image.load(path.join(IMG_DIR, img_name)).convert()
+    image.set_colorkey(colors["BLACK"])
+    return image
+
 def draw_bg():
     """Rendering background.
 
@@ -77,7 +91,6 @@ def draw_text(text, pos, size, color):
     :type: text: int
     :param: color: color of text
     :type: text: str
-
 
     |
     """
@@ -128,7 +141,6 @@ def draw_lives(lives, icon):
     :param: lives: number of lives
     :type: lives: int
     :param: icon: player icon
-    :type: icon: object
 
     |
     """
@@ -152,7 +164,6 @@ def draw_player_info(player, score):
     """Rendering player lives, health and score.
 
     :param: player: personage.player
-    :type: text: object
     :param: score: value for drowing
     :type: text: int
 

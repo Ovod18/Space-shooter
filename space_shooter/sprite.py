@@ -96,13 +96,8 @@ class Player(pygame.sprite.Sprite):
 
     def __init__(self, screen):
         pygame.sprite.Sprite.__init__(self)
-        # Loading player image.
-        self.image = pygame.image.load(path.join(graphics.IMG_DIR,
-                                                 "rocket.png")).convert()
-        self.image.set_colorkey(graphics.colors["BLACK"])
-        # Loading player icon.
+        self.image = graphics.load_img("rocket.png")
         self.icon = pygame.transform.scale(self.image, (20, 25))
-        self.icon.set_colorkey(graphics.colors["BLACK"])
         # Check and draw collision area.
         #pygame.draw.circle(self.image, graphics.colors["BLACK"],
         #                   self.rect.center, self.radius)
@@ -219,9 +214,7 @@ class Mob(pygame.sprite.Sprite):
 
     def __init__(self, screen):
         pygame.sprite.Sprite.__init__(self)
-        self.image_orig = pygame.image.load(path.join(graphics.IMG_DIR,
-                                            "kal.png")).convert()
-        self.image_orig.set_colorkey(graphics.colors["BLACK"])
+        self.image_orig = graphics.load_img("kal.png")
         self.image = self.image_orig.copy()
         self.rect = self.image.get_rect()
         self.radius = self.rect.width / 2
@@ -303,9 +296,7 @@ class Bullet(pygame.sprite.Sprite):
 
     def __init__(self, *pos):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load(path.join(graphics.IMG_DIR,
-                                                 "bullet.png")).convert()
-        self.image.set_colorkey(graphics.colors["BLACK"])
+        self.image = graphics.load_img("bullet.png")
         self.rect = self.image.get_rect()
         self.rect.centerx, self.rect.bottom = pos
         self.speed_y = -10

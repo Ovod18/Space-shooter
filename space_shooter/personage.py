@@ -169,9 +169,10 @@ class Player(pygame.sprite.Sprite):
         |
         """
         now = pygame.time.get_ticks()
-        if now - self.last_shot > self.shoot_delay:
-            self.last_shot = now
-            bullet = Bullet(self.rect.centerx, self.rect.top)
+        if not (self.hidden):
+            if now - self.last_shot > self.shoot_delay:
+                self.last_shot = now
+                bullet = Bullet(self.rect.centerx, self.rect.top)
 
 class Mob(pygame.sprite.Sprite):
     """This class defines a mob.

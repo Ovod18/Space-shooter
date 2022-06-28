@@ -11,6 +11,8 @@ CLASSES
 
 :py:class:`.Bullet`
 
+:py:class:`.Bonus`
+
 FUNCTIONS
 
 :py:func:`.new_mob`
@@ -35,6 +37,12 @@ mobs = pygame.sprite.Group()
 """
 bullets = pygame.sprite.Group()
 """The group of all bullets.
+
+|
+"""
+
+bonuses = pygame.sprite.Group()
+"""The group of all bonuses.
 
 |
 """
@@ -300,7 +308,6 @@ class Bullet(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.centerx, self.rect.bottom = pos
         self.speed_y = -10
-        # Adding a bullet to groups (in args).
         self.add(all_sprites, bullets)
 
     def update(self, screen):
@@ -322,5 +329,45 @@ def new_mob(count):
     """
     for i in range(count):
         mob = Mob(graphics.screen)
+
+class Bonus(pygame.sprite.Sprite):
+    """This class defines a bonus.
+
+    METHODS
+
+    :py:meth:`Bonus.update()`
+
+    |
+
+    ATTRIBUTES
+
+    .. py:attribute:: rect
+        The rect of bonus surface.
+        :type: object
+    .. py:attribute:: speed_y
+        The speed of vertical bonus moving.
+        :type: int
+
+    |
+    """
+
+    def __init__(self, center):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = graphics.load_img("bonus.png")
+        self.rect = self.image.get_rect()
+        self.rect.center = center
+        self.speed_y = 2
+        self.type = "health"
+        self.add(all_sprites, bonuses)
+
+    def update(self, screen):
+        """This method defines bonus updating.
+
+        |
+        """
+        self.rect.y += self.speed_y
+        # Kill a bonus, if it goes downer the screen bottom.
+        if self.rect.top > graphics.HEIGHT:
+            self.kill()
 
 player = Player(graphics.screen)

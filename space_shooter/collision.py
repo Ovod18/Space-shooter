@@ -9,12 +9,15 @@ FUNCTIONS
 
 :py:func:`.player_mobs_collide`
 
+:py:func:`.player_bonuses_collide`
+
 :py:func:`.check_collision_all`
 
 |
 """
 
 import pygame
+import random
 import sprite
 import session
 
@@ -32,6 +35,8 @@ def mobs_bullets_collide(mobs, bullets):
     for hit in hits:
         sprite.new_mob(1)
         session.score += 1
+        if random.random() > 0.9:
+            b = sprite.Bonus(hit.rect.center)
 
 def player_mobs_collide(player, mobs):
     """This function defines player and mobs collision.
@@ -53,6 +58,20 @@ def player_mobs_collide(player, mobs):
             sprite.player.lives -= 1
             sprite.player.health = 100
 
+def player_bonuses_collide(player, bonuses):
+    """This function defines player and bonuses collision.
+
+    :param: player: The instance of class Player in sprite module.
+
+    :param: mobs: The group of bonuses.
+
+    |
+    """
+    hits = pygame.sprite.spritecollide(player, bonuses, True)
+    for hit in hits:
+        if hit.type == 'health':
+            player.health = 100
+
 def check_collision_all():
     """Checking collision between all sprites and groups.
 
@@ -60,3 +79,4 @@ def check_collision_all():
     """
     mobs_bullets_collide(sprite.mobs, sprite.bullets)
     player_mobs_collide(sprite.player, sprite.mobs)
+    player_bonuses_collide(sprite.player, sprite.bonuses)

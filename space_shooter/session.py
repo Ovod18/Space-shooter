@@ -60,7 +60,7 @@ def init():
     sprite.player.lives = 3
     for mob in sprite.mobs:
         mob.kill()
-    sprite.new_mob(40)
+    sprite.new_mob(10)
 
 
 def wait():

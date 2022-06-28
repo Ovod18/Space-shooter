@@ -1,4 +1,4 @@
-"""This module contains player difinitions.
+"""This module contains sprites difinitions.
 
 :platform: Linux
 :author: Ovod18

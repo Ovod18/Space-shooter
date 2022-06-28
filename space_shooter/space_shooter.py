@@ -16,7 +16,7 @@ CONSTANTS
 
 import pygame
 import graphics
-import personage
+import sprite
 import collision
 import session
 
@@ -44,13 +44,13 @@ def main():
     while session.status.running:
         clock.tick(FPS)
         session.check_quit()
-        personage.all_sprites.update(graphics.screen)
+        sprite.all_sprites.update(graphics.screen)
         collision.check_collision_all()
         session.check_game_over()
         # Rendering.
         graphics.draw_bg()
-        personage.all_sprites.draw(graphics.screen)
-        graphics.draw_player_info(personage.player, session.score)
+        sprite.all_sprites.draw(graphics.screen)
+        graphics.draw_player_info(sprite.player, session.score)
         pygame.display.flip()
 
     pygame.quit()

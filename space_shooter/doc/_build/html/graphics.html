@@ -14,7 +14,7 @@
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="personage module" href="personage.html" />
+    <link rel="next" title="session module" href="session.html" />
     <link rel="prev" title="collision module" href="collision.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -45,6 +45,7 @@
 <p><a class="reference internal" href="#graphics.draw_health_bar" title="graphics.draw_health_bar"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw_health_bar()</span></code></a></p>
 <p><a class="reference internal" href="#graphics.draw_lives" title="graphics.draw_lives"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw_lives()</span></code></a></p>
 <p><a class="reference internal" href="#graphics.draw_bg" title="graphics.draw_bg"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw_bg()</span></code></a></p>
+<p><a class="reference internal" href="#graphics.draw_player_info" title="graphics.draw_player_info"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw_player_info()</span></code></a></p>
 <p>CONSTANTS</p>
 <p><a class="reference internal" href="#graphics.SCREEN_SIZE" title="graphics.SCREEN_SIZE"><code class="xref py py-data docutils literal notranslate"><span class="pre">SCREEN_SIZE</span></code></a></p>
 <p><a class="reference internal" href="#graphics.IMG_DIR" title="graphics.IMG_DIR"><code class="xref py py-data docutils literal notranslate"><span class="pre">IMG_DIR</span></code></a></p>
@@ -138,6 +139,29 @@
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="graphics.draw_player_info">
+<span class="sig-prename descclassname"><span class="pre">graphics.</span></span><span class="sig-name descname"><span class="pre">draw_player_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.draw_player_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rendering player lives, health and score.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>player: personage.player</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>text: object</p>
+</dd>
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>score: value for drowing</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>text: int</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="graphics.draw_score">
 <span class="sig-prename descclassname"><span class="pre">graphics.</span></span><span class="sig-name descname"><span class="pre">draw_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">score</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.draw_score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rendering text on the screen.</p>
@@ -167,6 +191,32 @@
 <dt class="sig sig-object py" id="graphics.draw_text">
 <span class="sig-prename descclassname"><span class="pre">graphics.</span></span><span class="sig-name descname"><span class="pre">draw_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#graphics.draw_text" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writing text on the screen.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>text: text for drowing on the screen</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>text: str</p>
+</dd>
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>pos: position for text drowing</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>text: tuple</p>
+</dd>
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>size: size of font</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>text: int</p>
+</dd>
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>color: color of text</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>text: str</p>
+</dd>
+</dl>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -195,9 +245,9 @@
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">space_shooter</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="collision.html">collision module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">graphics module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="personage.html">personage module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="session.html">session module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="space_shooter.html">space_shooter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sprite.html">sprite module</a></li>
 </ul>
 </li>
 </ul>
@@ -208,7 +258,7 @@
   <li><a href="index.html">Documentation overview</a><ul>
   <li><a href="modules.html">space_shooter</a><ul>
       <li>Previous: <a href="collision.html" title="previous chapter">collision module</a></li>
-      <li>Next: <a href="personage.html" title="next chapter">personage module</a></li>
+      <li>Next: <a href="session.html" title="next chapter">session module</a></li>
   </ul></li>
   </ul></li>
 </ul>

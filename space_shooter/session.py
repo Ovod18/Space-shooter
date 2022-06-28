@@ -17,7 +17,7 @@ FUNCTIONS
 |
 """
 
-import personage
+import sprite
 import pygame
 import graphics
 
@@ -56,11 +56,11 @@ def init():
     """
     global score
     score = 0
-    personage.player.health = 100
-    personage.player.lives = 3
-    for mob in personage.mobs:
+    sprite.player.health = 100
+    sprite.player.lives = 3
+    for mob in sprite.mobs:
         mob.kill()
-    personage.new_mob(40)
+    sprite.new_mob(40)
 
 
 def wait():
@@ -97,7 +97,7 @@ def check_game_over():
 
     |
     """
-    if personage.player.lives == 0:
+    if sprite.player.lives == 0:
         status.game_over = True
         if status.game_over:
             wait()

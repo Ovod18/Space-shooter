@@ -16,9 +16,9 @@ CONSTANTS
 
 import pygame
 import graphics
-import sprite
 import collision
 import session
+from sprite import all_sprites, player
 
 FPS = 60
 """The frame rate.
@@ -44,13 +44,13 @@ def main():
     while session.status.running:
         clock.tick(FPS)
         session.check_quit()
-        sprite.all_sprites.update(graphics.screen)
+        all_sprites.update(graphics.screen)
         collision.check_collision_all()
         session.check_game_over()
         # Rendering.
         graphics.draw_bg()
-        sprite.all_sprites.draw(graphics.screen)
-        graphics.draw_player_info(sprite.player, session.score)
+        all_sprites.draw(graphics.screen)
+        graphics.draw_player_info(player, session.score)
         pygame.display.flip()
 
     pygame.quit()

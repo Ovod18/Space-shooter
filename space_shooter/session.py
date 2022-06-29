@@ -17,9 +17,9 @@ FUNCTIONS
 |
 """
 
-import sprite
 import pygame
-import graphics
+import sprite
+from graphics import draw_start_screen
 
 waiting = True
 running = False
@@ -68,7 +68,8 @@ def wait():
 
     |
     """
-    graphics.draw_start_screen()
+    #graphics.draw_start_screen()
+    draw_start_screen()
     pygame.display.flip()
     status.waiting = True
     while status.waiting:

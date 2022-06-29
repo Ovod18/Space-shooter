@@ -167,7 +167,6 @@ class Player(pygame.sprite.Sprite):
         if self.power > 1 and self.last_powerup < (now - self.power_time):
             self.power = 1
             self.last_powerup = now
-        print(self.power)
 
     def hide(self):
         """This method defines player hiding.

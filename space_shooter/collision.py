@@ -67,10 +67,13 @@ def player_bonuses_collide(player, bonuses):
 
     |
     """
-    hits = pygame.sprite.spritecollide(player, bonuses, True)
+    hits = pygame.sprite.spritecollide(player, bonuses, True,
+                                       pygame.sprite.collide_circle)
     for hit in hits:
         if hit.type == 'health':
             player.health = 100
+        elif hit.type == 'power':
+            player.powerup()
 
 def check_collision_all():
     """Checking collision between all sprites and groups.

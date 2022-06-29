@@ -58,6 +58,7 @@ class Player(pygame.sprite.Sprite):
 
     :py:meth:`Player.hide()`
 
+    :py:meth:`Player.powerup()`
 
     |
 
@@ -65,13 +66,10 @@ class Player(pygame.sprite.Sprite):
 
     .. py:attribute:: image
         The player image.
-        :type: object
     .. py:attribute:: icon
         The player icon.
-        :type: object
     .. py:attribute:: rect
         The rect of player surface.
-        :type: object
     .. py:attribute:: speed_x
         The speed of horizontal player moving.
         :type: int
@@ -98,6 +96,14 @@ class Player(pygame.sprite.Sprite):
     .. py:attribute:: hide_timer
         Time of last player hiding.
         :type: int
+    .. py:attribute:: power
+        The player power.
+        :type: int
+        :value: 1
+    .. py:attribute:: power_time
+        The delay of power.
+        :type: int
+        :value: 5000
 
     |
     """
@@ -115,12 +121,16 @@ class Player(pygame.sprite.Sprite):
         self.rect.centerx = graphics.screen.get_width() / 2
         self.rect.bottom = graphics.screen.get_height() - 10
         self.speed_x = 0
-        # Player health.
+        # Health.
         self.health = 100
         self.lives = 3
-        # Player visibility.
+        # Visibility.
         self.hidden = False
         self.hide_timer = pygame.time.get_ticks()
+        # Power
+        self.power = 1
+        self.power_time = 5000
+        self.last_powerup = pygame.time.get_ticks()
         # Autoshooting.
         self.shoot_delay = 250
         self.last_shot = self.hide_timer
@@ -129,7 +139,7 @@ class Player(pygame.sprite.Sprite):
     def update(self, screen):
         """This method defines player updating.
 
-        :param: object screen: The player rendering screen.
+        :param: screen: The player rendering screen.
 
         |
         """
@@ -153,6 +163,11 @@ class Player(pygame.sprite.Sprite):
             self.rect.left = 0
         if keystate[pygame.K_SPACE]:
             self.shoot()
+        now = pygame.time.get_ticks()
+        if self.power > 1 and self.last_powerup < (now - self.power_time):
+            self.power = 1
+            self.last_powerup = now
+        print(self.power)
 
     def hide(self):
         """This method defines player hiding.
@@ -167,7 +182,7 @@ class Player(pygame.sprite.Sprite):
     def shoot(self):
         """This method defines player shooting.
 
-        :param: object args: Groups of sprites, where a bullet will be added.
+        :param: args: Groups of sprites, where a bullet will be added.
 
         |
         """
@@ -175,7 +190,27 @@ class Player(pygame.sprite.Sprite):
         if not (self.hidden):
             if now - self.last_shot > self.shoot_delay:
                 self.last_shot = now
-                bullet = Bullet(self.rect.centerx, self.rect.top)
+                if self.power == 1:
+                    bullet = Bullet(self.rect.centerx, self.rect.top)
+                if self.power == 2:
+                    bullet1 = Bullet((self.rect.centerx-self.rect.width/2),
+                                                           self.rect.top)
+                    bullet2 = Bullet((self.rect.centerx+self.rect.width/2),
+                                                           self.rect.top)
+                if self.power >= 3:
+                    bullet1 = Bullet(self.rect.centerx, self.rect.top)
+                    bullet2 = Bullet((self.rect.centerx-self.rect.width/2),
+                                                           self.rect.top)
+                    bullet3 = Bullet((self.rect.centerx+self.rect.width/2),
+                                                           self.rect.top)
+
+    def powerup(self):
+        """This method defines player power up.
+
+        |
+        """
+        self.last_powerup = pygame.time.get_ticks()
+        if self.power < 3: self.power += 1
 
 class Mob(pygame.sprite.Sprite):
     """This class defines a mob.
@@ -192,13 +227,10 @@ class Mob(pygame.sprite.Sprite):
 
     .. py:attribute:: image_orig
         A mobs image.
-        :type: object
     .. py:attribute:: image
         A copy of image_orig (for image rotation).
-        :type: object
     .. py:attribute:: rect
         The rect of mob surface.
-        :type: object
     .. py:attribute:: speed_x
         The speed of horizontal mob  moving.
         :type: int
@@ -243,7 +275,7 @@ class Mob(pygame.sprite.Sprite):
     def update(self, screen):
         """This method defines mob updating.
 
-        :param: object screen: The mob rendering screen.
+        :param: screen: The mob rendering screen.
 
         |
         """
@@ -291,10 +323,10 @@ class Bullet(pygame.sprite.Sprite):
 
     .. py:attribute:: image
         A mobs image.
-        :type: object
+        :type:
     .. py:attribute:: rect
         The rect of bullet surface.
-        :type: object
+        :type:
     .. py:attribute:: speed_y
         The speed of vertical bullet moving.
         :type: int
@@ -343,7 +375,7 @@ class Bonus(pygame.sprite.Sprite):
 
     .. py:attribute:: rect
         The rect of bonus surface.
-        :type: object
+        :type:
     .. py:attribute:: speed_y
         The speed of vertical bonus moving.
         :type: int
@@ -357,7 +389,7 @@ class Bonus(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = center
         self.speed_y = 2
-        self.type = "health"
+        self.type = random.choice(("health", "power"))
         self.add(all_sprites, bonuses)
 
     def update(self, screen):

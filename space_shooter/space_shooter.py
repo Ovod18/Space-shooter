@@ -41,7 +41,7 @@ def main():
     session.wait()
 
     # Create the game cycle.
-    while session.status.running:
+    while session.status["running"]:
         clock.tick(FPS)
         session.check_quit()
         all_sprites.update(graphics.screen)

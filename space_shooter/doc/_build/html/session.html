@@ -32,54 +32,16 @@
   <div class="section" id="module-session">
 <span id="session-module"></span><h1>session module<a class="headerlink" href="#module-session" title="Permalink to this headline">¶</a></h1>
 <p>This module defines the game session.</p>
-<p>CLASSES</p>
-<p><a class="reference internal" href="#session.Status" title="session.Status"><code class="xref py py-class docutils literal notranslate"><span class="pre">Status</span></code></a></p>
 <p>FUNCTIONS</p>
 <p><a class="reference internal" href="#session.init" title="session.init"><code class="xref py py-func docutils literal notranslate"><span class="pre">init()</span></code></a></p>
 <p><a class="reference internal" href="#session.wait" title="session.wait"><code class="xref py py-func docutils literal notranslate"><span class="pre">wait()</span></code></a></p>
 <p><a class="reference internal" href="#session.check_quit" title="session.check_quit"><code class="xref py py-func docutils literal notranslate"><span class="pre">check_quit()</span></code></a></p>
 <p><a class="reference internal" href="#session.check_game_over" title="session.check_game_over"><code class="xref py py-func docutils literal notranslate"><span class="pre">check_game_over()</span></code></a></p>
 <p>DATA</p>
-<p><a class="reference internal" href="#session.waiting" title="session.waiting"><code class="xref py py-data docutils literal notranslate"><span class="pre">waiting</span></code></a></p>
-<p><a class="reference internal" href="#session.running" title="session.running"><code class="xref py py-data docutils literal notranslate"><span class="pre">running</span></code></a></p>
-<p><a class="reference internal" href="#session.game_over" title="session.game_over"><code class="xref py py-data docutils literal notranslate"><span class="pre">game_over</span></code></a></p>
+<p><a class="reference internal" href="#session.status" title="session.status"><code class="xref py py-data docutils literal notranslate"><span class="pre">status</span></code></a></p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<dl class="py class">
-<dt class="sig sig-object py" id="session.Status">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">session.</span></span><span class="sig-name descname"><span class="pre">Status</span></span><a class="headerlink" href="#session.Status" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Status information of current game session.</p>
-<blockquote>
-<div><p>ATTRIBUTES</p>
-</div></blockquote>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="session.Status.waiting">
-<span class="sig-name descname"><span class="pre">waiting</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#session.Status.waiting" title="Permalink to this definition">¶</a></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">The</span> <span class="pre">game</span> <span class="pre">current</span> <span class="pre">session</span> <span class="pre">status.</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="session.Status.running">
-<span class="sig-name descname"><span class="pre">running</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#session.Status.running" title="Permalink to this definition">¶</a></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">The</span> <span class="pre">game</span> <span class="pre">current</span> <span class="pre">session</span> <span class="pre">status.</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="session.Status.game_over">
-<span class="sig-name descname"><span class="pre">game_over</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#session.Status.game_over" title="Permalink to this definition">¶</a></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">The</span> <span class="pre">game</span> <span class="pre">current</span> <span class="pre">session</span> <span class="pre">status.</span></span></dt>
-<dd></dd></dl>
-
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-</dd></dl>
-
 <dl class="py function">
 <dt class="sig sig-object py" id="session.check_game_over">
 <span class="sig-prename descclassname"><span class="pre">session.</span></span><span class="sig-name descname"><span class="pre">check_game_over</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#session.check_game_over" title="Permalink to this definition">¶</a></dt>
@@ -98,12 +60,6 @@
 </div>
 </dd></dl>
 
-<dl class="py data">
-<dt class="sig sig-object py" id="session.game_over">
-<span class="sig-prename descclassname"><span class="pre">session.</span></span><span class="sig-name descname"><span class="pre">game_over</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#session.game_over" title="Permalink to this definition">¶</a></dt>
-<dd><p>The game conditions.</p>
-</dd></dl>
-
 <dl class="py function">
 <dt class="sig sig-object py" id="session.init">
 <span class="sig-prename descclassname"><span class="pre">session.</span></span><span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#session.init" title="Permalink to this definition">¶</a></dt>
@@ -114,9 +70,12 @@
 </dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="session.running">
-<span class="sig-prename descclassname"><span class="pre">session.</span></span><span class="sig-name descname"><span class="pre">running</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#session.running" title="Permalink to this definition">¶</a></dt>
-<dd><p>The game conditions.</p>
+<dt class="sig sig-object py" id="session.status">
+<span class="sig-prename descclassname"><span class="pre">session.</span></span><span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'game_over':</span> <span class="pre">False,</span> <span class="pre">'running':</span> <span class="pre">False,</span> <span class="pre">'waiting':</span> <span class="pre">True}</span></em><a class="headerlink" href="#session.status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Game conditions.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -126,12 +85,6 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="session.waiting">
-<span class="sig-prename descclassname"><span class="pre">session.</span></span><span class="sig-name descname"><span class="pre">waiting</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#session.waiting" title="Permalink to this definition">¶</a></dt>
-<dd><p>The game conditions.</p>
 </dd></dl>
 
 </div>

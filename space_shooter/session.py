@@ -1,9 +1,5 @@
 """This module defines the game session.
 
-CLASSES
-
-:py:class:`.Status`
-
 FUNCTIONS
 
 :py:func:`.init`
@@ -16,11 +12,7 @@ FUNCTIONS
 
 DATA
 
-:py:data:`.waiting`
-
-:py:data:`.running`
-
-:py:data:`.game_over`
+:py:data:`.status`
 
 |
 """
@@ -29,29 +21,11 @@ import pygame
 import sprite
 from graphics import draw_start_screen
 
-waiting, running, game_over = True, False, False
-"""The game conditions."""
+status = {"waiting": True, "running": False, "game_over": False }
+"""Game conditions.
 
-class Status():
-    """Status information of current game session.
-
-     ATTRIBUTES
-
-    .. py:attribute:: waiting
-        The game current session status.
-        :type: bool
-    .. py:attribute:: running
-        The game current session status.
-        :type: bool
-    .. py:attribute:: game_over
-        The game current session status.
-        :type: bool
-
-    |
-    """
-
-    def __init__(self):
-        self.waiting, self.running, self.game_over = True, False, False
+|
+"""
 
 def init():
     """Reset all to start.
@@ -74,17 +48,18 @@ def wait():
     """
     draw_start_screen()
     pygame.display.flip()
-    status.waiting = True
-    while status.waiting:
+    status["waiting"] = True
+    status["waiting"] = True
+    while status["waiting"]:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                status.waiting = False
-                status.running = False
+                status["waiting"] = False
+                status["running"] = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
-                    status.waiting = False
-                    status.game_over = False
-                    status.running = True
+                    status["waiting"] = False
+                    status["game_over"] = False
+                    status["running"] = True
                     init()
 
 def check_quit():
@@ -94,7 +69,7 @@ def check_quit():
     """
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            status.running = False
+            status["running"] = False
 
 def check_game_over():
     """Check is the game over.
@@ -102,9 +77,6 @@ def check_game_over():
     |
     """
     if sprite.player.lives == 0:
-        status.game_over = True
-        if status.game_over:
+        status["game_over"] = True
+        if status["game_over"]:
             wait()
-
-
-status = Status()

@@ -14,6 +14,14 @@ FUNCTIONS
 
 :py:func:`.check_game_over`
 
+DATA
+
+:py:data:`.waiting`
+
+:py:data:`.running`
+
+:py:data:`.game_over`
+
 |
 """
 
@@ -21,10 +29,8 @@ import pygame
 import sprite
 from graphics import draw_start_screen
 
-waiting = True
-running = False
-game_over = False
-
+waiting, running, game_over = True, False, False
+"""The game conditions."""
 
 class Status():
     """Status information of current game session.
@@ -45,9 +51,7 @@ class Status():
     """
 
     def __init__(self):
-        self.waiting = True
-        self.running = False
-        self.game_over = False
+        self.waiting, self.running, self.game_over = True, False, False
 
 def init():
     """Reset all to start.
@@ -68,7 +72,6 @@ def wait():
 
     |
     """
-    #graphics.draw_start_screen()
     draw_start_screen()
     pygame.display.flip()
     status.waiting = True

@@ -179,7 +179,6 @@ class Player(pygame.sprite.Sprite):
         self.speed_x = 0
         # Health.
         self.health = self.health_max = 100
-        #self.health = 100
         self.lives = 3
         # Visibility.
         self.hidden = False
@@ -206,18 +205,15 @@ class Player(pygame.sprite.Sprite):
             self.rect.centerx = graphics.screen.get_width() / 2
             self.rect.bottom = graphics.screen.get_height() - 10
 
-        screen_size = screen.get_size()
         self.speed_x = 0
         keystate = pygame.key.get_pressed()
-        if keystate[pygame.K_RIGHT]:
-            self.speed_x = 6
+        if keystate[pygame.K_RIGHT]: self.speed_x = 6
         if keystate[pygame.K_LEFT]:
             self.speed_x = -6
         self.rect.x += self.speed_x
         if self.rect.right > graphics.screen.get_width():
             self.rect.right = graphics.screen.get_width()
-        if self.rect.left < 0:
-            self.rect.left = 0
+        if self.rect.left < 0: self.rect.left = 0
         if keystate[pygame.K_SPACE]:
             self.shoot()
         now = pygame.time.get_ticks()
@@ -358,7 +354,6 @@ class Mob(pygame.sprite.Sprite):
         # Check collision area.
         #pygame.draw.circle(self.image, graphics.colors["RED"],
         #                   self.rect.center, self.radius)
-        screen_size = screen.get_size()
         self.rect.x = random.randrange(graphics.screen.get_width()
                                        - self.rect.width)
         self.rect.y = random.randrange(-100, -40)
@@ -376,7 +371,6 @@ class Mob(pygame.sprite.Sprite):
 
         |
         """
-        screen_size = screen.get_size()
         # Movement.
         self.rect.x += self.speedx
         self.rect.y += self.speedy
@@ -454,6 +448,8 @@ class Bullet(pygame.sprite.Sprite):
     def update(self, screen):
         """This method defines bullet updating.
 
+        :param: screen: The bullet rendering screen.
+
         |
         """
         self.rect.y += self.speed_y
@@ -510,6 +506,8 @@ class Bonus(pygame.sprite.Sprite):
 
     def update(self, screen):
         """This method defines bonus updating.
+
+        :param: screen: The bonus rendering screen.
 
         |
         """

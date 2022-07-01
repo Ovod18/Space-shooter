@@ -34,8 +34,7 @@ def mobs_bullets_collide(mobs, bullets):
     for hit in hits:
         sprite.new_mob(1)
         session.score += 1
-        if random.random() > 0.9:
-            b = sprite.Bonus(hit.rect.center)
+        if random.random() > 0.9: b = sprite.Bonus(hit.rect.center)
 
 def player_mobs_collide(player, mobs):
     """This function defines player and mobs collision.
@@ -55,7 +54,7 @@ def player_mobs_collide(player, mobs):
         if sprite.player.health  <= 0:
             sprite.player.hide()
             sprite.player.lives -= 1
-            sprite.player.health = 100
+            sprite.player.health = player.health_max
 
 def player_bonuses_collide(player, bonuses):
     """This function defines player and bonuses collision.
@@ -69,10 +68,8 @@ def player_bonuses_collide(player, bonuses):
     hits = pygame.sprite.spritecollide(player, bonuses, True,
                                        pygame.sprite.collide_circle)
     for hit in hits:
-        if hit.type == 'health':
-            player.health = 100
-        elif hit.type == 'power':
-            player.powerup()
+        if hit.type == 'health': player.health = player.health_max
+        elif hit.type == 'power': player.powerup()
 
 def check_collision_all():
     """Checking collision between all sprites and groups.

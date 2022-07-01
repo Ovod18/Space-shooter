@@ -34,7 +34,7 @@ def init():
     """
     global score
     score = 0
-    sprite.player.health = 100
+    sprite.player.health = sprite.player.health_max
     sprite.player.lives = 3
     for mob in sprite.mobs:
         mob.kill()
@@ -48,7 +48,6 @@ def wait():
     """
     draw_start_screen()
     pygame.display.flip()
-    status["waiting"] = True
     status["waiting"] = True
     while status["waiting"]:
         for event in pygame.event.get():
@@ -78,5 +77,4 @@ def check_game_over():
     """
     if sprite.player.lives == 0:
         status["game_over"] = True
-        if status["game_over"]:
-            wait()
+        if status["game_over"]: wait()

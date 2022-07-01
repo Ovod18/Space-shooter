@@ -77,8 +77,7 @@ def draw_bg():
 
     |
     """
-    bg_rect = bg_img.get_rect()
-    screen.blit(bg_img, bg_rect)
+    screen.blit(bg_img, bg_img.get_rect())
 
 def draw_text(text, pos, size, color):
     """Writing text on the screen.
@@ -124,10 +123,8 @@ def draw_health_bar(percent):
         percent = 0
     bar_size = (bar_length := 100, bar_height := 10)
     fill = (percent / 100) * bar_length
-    if fill <= 30:
-        color = colors["RED"]
-    else:
-        color = colors["GREEN"]
+    if fill <= 30: color = colors["RED"]
+    else: color = colors["GREEN"]
     border_rect = pygame.Rect(*pos, *bar_size)
     fill_rect = pygame.Rect(*pos, fill, bar_height)
     # Draw an internal rect.

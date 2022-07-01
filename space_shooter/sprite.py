@@ -52,54 +52,110 @@ class Player(pygame.sprite.Sprite):
 
     METHODS
 
-    :py:meth:`Player.update()`
+    :py:meth:`Player.update`
 
-    :py:meth:`Player.shoot()`
+    :py:meth:`Player.shoot`
 
-    :py:meth:`Player.hide()`
+    :py:meth:`Player.hide`
 
-    :py:meth:`Player.powerup()`
+    :py:meth:`Player.powerup`
 
     |
 
     ATTRIBUTES
 
+    :py:attr:`Player.image`
+
+    :py:attr:`Player.icon`
+
+    :py:attr:`Player.rect`
+
+    :py:attr:`Player.speed_x`
+
+    :py:attr:`Player.helth_max`
+
+    :py:attr:`Player.helth`
+
+    :py:attr:`Player.shoot_delay`
+
+    :py:attr:`Player.last_shoot`
+
+    :py:attr:`Player.lives`
+
+    :py:attr:`Player.hidden`
+
+    :py:attr:`Player.hide_timer`
+
+    :py:attr:`Player.power`
+
+    :py:attr:`Player.power_time`
+
+    |
+
     .. py:attribute:: image
         The player image.
+
+        |
     .. py:attribute:: icon
         The player icon.
+
+        |
     .. py:attribute:: rect
         The rect of player surface.
+
+        |
     .. py:attribute:: speed_x
         The speed of horizontal player moving.
         :type: int
         :value: 8
+
+        |
+    .. py:attribute:: health_max
+        The maximum value of player health.
+        :type: int
+        :value: 100
+
+        |
     .. py:attribute:: health
         The player health.
         :type: int
         :value: 100
+
+        |
     .. py:attribute:: shoot_delay
         Delay between shots.
         :type: int
         :value: 250
+
+        |
     .. py:attribute:: last_shot
         Time of last shot.
         :type: int
+
+        |
     .. py:attribute:: lives
         Count of player lives.
         :type: int
         :value: 3
+
+        |
     .. py:attribute:: hidden
         The flag of player hiding.
         :type: bool
         :value: False
+
+        |
     .. py:attribute:: hide_timer
         Time of last player hiding.
         :type: int
+
+        |
     .. py:attribute:: power
         The player power.
         :type: int
         :value: 1
+
+        |
     .. py:attribute:: power_time
         The delay of power.
         :type: int
@@ -122,7 +178,8 @@ class Player(pygame.sprite.Sprite):
         self.rect.bottom = graphics.screen.get_height() - 10
         self.speed_x = 0
         # Health.
-        self.health = 100
+        self.health = self.health_max = 100
+        #self.health = 100
         self.lives = 3
         # Visibility.
         self.hidden = False
@@ -216,37 +273,78 @@ class Mob(pygame.sprite.Sprite):
 
     METHODS
 
-    :py:meth:`Mob.update()`
+    :py:meth:`Mob.update`
 
-    :py:meth:`Mob.rotate()`
+    :py:meth:`Mob.rotate`
 
     |
 
     ATTRIBUTES
 
+    :py:attr:`Mob.image_orig`
+
+    :py:attr:`Mob.image`
+
+    :py:attr:`Mob.rect`
+
+    :py:attr:`Mob.speed_x`
+
+    :py:attr:`Mob.speed_y`
+
+    :py:attr:`Mob.rot`
+
+    :py:attr:`Mob.rot_speed`
+
+    :py:attr:`Mob.last_update`
+
+    :py:attr:`Mob.damage`
+
+
+    |
+
     .. py:attribute:: image_orig
         A mobs image.
+
+        |
     .. py:attribute:: image
         A copy of image_orig (for image rotation).
+
+        |
     .. py:attribute:: rect
         The rect of mob surface.
+
+        |
     .. py:attribute:: speed_x
         The speed of horizontal mob  moving.
         :type: int
+
+        |
     .. py:attribute:: speed_y
         The speed of vertical mob moving.
         :type: int
+
+        |
     .. py:attribute:: rot
         The initial rotation angle.
         :type: int
         :value: 0
+
+        |
     .. py:attribute:: rot_speed
         The angle of mob rotation.
         :type: int
+
+        |
     .. py:attribute:: last_update
         Time of mob updating.
         :type: int
 
+    |
+    """
+
+    damage = 10
+    """The mob gamage (class attribute).
+       :type: int
 
     |
     """
@@ -314,18 +412,30 @@ class Bullet(pygame.sprite.Sprite):
 
     METHODS
 
-    :py:meth:`Bullet.update()`
+    :py:meth:`Bullet.update`
 
     |
 
     ATTRIBUTES
 
+    :py:attr:`Bullet.image`
+
+    :py:attr:`Bullet.rect`
+
+    :py:attr:`Bullet.speed_y`
+
+    |
+
     .. py:attribute:: image
         A mobs image.
         :type:
+
+        |
     .. py:attribute:: rect
         The rect of bullet surface.
         :type:
+
+        |
     .. py:attribute:: speed_y
         The speed of vertical bullet moving.
         :type: int
@@ -366,15 +476,22 @@ class Bonus(pygame.sprite.Sprite):
 
     METHODS
 
-    :py:meth:`Bonus.update()`
+    :py:meth:`Bonus.update`
 
     |
 
     ATTRIBUTES
 
+    :py:attr:`Bonus.rect`
+
+    :py:attr:`Bonus.speed_y`
+
+    |
+
     .. py:attribute:: rect
         The rect of bonus surface.
-        :type:
+
+        |
     .. py:attribute:: speed_y
         The speed of vertical bonus moving.
         :type: int

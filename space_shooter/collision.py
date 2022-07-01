@@ -30,8 +30,7 @@ def mobs_bullets_collide(mobs, bullets):
 
     |
     """
-    hits = pygame.sprite.groupcollide(mobs, bullets,
-                                      True, True)
+    hits = pygame.sprite.groupcollide(mobs, bullets, True, True)
     for hit in hits:
         sprite.new_mob(1)
         session.score += 1
@@ -50,7 +49,7 @@ def player_mobs_collide(player, mobs):
     hits = pygame.sprite.spritecollide(sprite.player, sprite.mobs,
                                        True, pygame.sprite.collide_circle)
     for hit in hits:
-        sprite.player.health -= 10
+        sprite.player.health -= sprite.Mob.damage
         sprite.new_mob(1)
         # Decrease player lives by 1.
         if sprite.player.health  <= 0:

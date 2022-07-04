@@ -497,11 +497,13 @@ class Bonus(pygame.sprite.Sprite):
 
     def __init__(self, center):
         pygame.sprite.Sprite.__init__(self)
-        self.image = graphics.load_img("bonus.png")
+        self.type = random.choice(("health", "power"))
+        if self.type == "health":
+            self.image = graphics.load_img("health_bonus.png")
+        else: self.image = graphics.load_img("bonus.png")
         self.rect = self.image.get_rect()
         self.rect.center = center
         self.speed_y = 2
-        self.type = random.choice(("health", "power"))
         self.add(all_sprites, bonuses)
 
     def update(self, screen):
